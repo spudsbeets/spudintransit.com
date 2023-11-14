@@ -1,0 +1,32 @@
+* {
+    background-color: gray;
+}
+
+.tile, .terminal {
+    width: 100px;
+    height: 100px;
+    border: solid black 2px
+}
+
+.tile {
+    background-color: white
+}
+
+.terminal {
+    background-color: blue
+}
+
+#main-hallway {
+    display: flex;
+    flex-direction: column-reverse
+}
+
+.offshoot-left {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.offshoot-right {
+    display: flex;
+    flex-direction: row
+}
