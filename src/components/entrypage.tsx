@@ -20,6 +20,7 @@ const EntryPage = () => {
      <h1 id="m">M</h1>
      <h1 id="e">E</h1>
     </div>
+    <p>to spud's lair</p>
     <div id="website-options">
      <button id="fun-path-button" onClick={() => setPathSelected("fun-path")}>Fun path(better on bigger screens)</button>
      <button id="boring-path-button" onClick={() => setPathSelected("boring-path")}>Boring path(easier to navigate...)</button>

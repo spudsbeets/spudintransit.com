@@ -2,31 +2,159 @@
     background-color: gray;
 }
 
-.tile, .terminal {
-    width: 100px;
-    height: 100px;
-    border: solid black 2px
+body, html {
+  max-width: 100%;
+  overflow: hidden;
 }
 
-.tile {
+.tile, .offshoot-tile-left, .offshoot-tile-right, .terminal {
+    width: 100px;
+    height: 100px;
+    border: solid black 1px;
+}
+
+.tile, .offshoot-tile-left, .offshoot-tile-right {
     background-color: white
 }
 
 .terminal {
-    background-color: blue
+    background-color: green
 }
 
 #main-hallway {
+    position: absolute;
+    left: 612px;
+    top: 0px;
     display: flex;
-    flex-direction: column-reverse
+    flex-direction: column;
+    padding: 0;
+    width: 120px;
+}
+
+#left-offshoot-hallways {
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-self: start;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 3300px
+}
+
+#right-offshoot-hallways {
+    position: absolute;
+    top: 0;
+    left: 714px;
+    justify-self: start;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 3300px
+}
+
+.offshoot-right {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap
 }
 
 .offshoot-left {
     display: flex;
     flex-direction: row-reverse;
+    flex-wrap: nowrap
 }
 
-.offshoot-right {
-    display: flex;
-    flex-direction: row
+#spud {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    z-index: 1;
+    margin-top: -90px;
+    margin-left: 10px;
+    position: absolute;
+    border: solid white 2px;
+}
+
+#offshoot-2 {
+  margin-top: 510px;
+}
+
+#offshoot-3 {
+  margin-top: 408px;
+}
+
+#offshoot-6 {
+  margin-top: 204px;
+}
+
+#offshoot-8 {
+  margin-top: 612px;
+}
+
+#offshoot-9 {
+  margin-top: 510px;
+}
+
+#offshoot-1 {
+  margin-top: 204px;
+}
+
+#offshoot-4 {
+  margin-top: 816px;
+}
+
+#offshoot-5 {
+  margin-top: 510px;
+}
+
+#offshoot-7 {
+  margin-top: 612px;
+}
+
+#offshoot-10 {
+  margin-top: 306px;
+}
+
+#direction-arrows-updown, #direction-arrows-leftright {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding-right: 10px;
+  padding-bottom: 10px
+}
+
+#direction-arrows-updown {
+  margin-right: 70px;
+  width: 50px;
+  z-index: 2
+}
+
+#direction-arrows-leftright {
+  margin-bottom: 50px;
+}
+
+.direction-button {
+  font-size: 2em;
+  margin-left: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+#up-arrow {
+  background-color: #5F8575;
+}
+
+#down-arrow {
+  background-color: #96ded1;
+  margin-top: 50px;
+}
+
+#left-arrow {
+  background-color: #c4b454;
+}
+
+#right-arrow {
+  background-color: #7df9ff;
+  margin-left: 70px;
 }
