@@ -1,5 +1,43 @@
+@keyframes fadein {
+  0% { opacity: 0 }
+  25% { opacity: .25 }
+  30% { opacity: 1 }
+  45% { opacity: .6 }
+  60% { opacity: .7 }
+  80% { opacity: .1 }
+  91% { opacity: .6 }
+  100% { opacity: 1 }
+}
+
+@keyframes fadein2 {
+  0% { opacity: 0 }
+  25% { opacity: .9 }
+  30% { opacity: .6 }
+  45% { opacity: .8 }
+  60% { opacity: .25 }
+  80% { opacity: .45 }
+  91% { opacity: .7 }
+  100% { opacity: 1 }
+}
+
+@keyframes fadein3 {
+  0% { opacity: 0 }
+  25% { opacity: .2 }
+  30% { opacity: .36 }
+  45% { opacity: .5 }
+  60% { opacity: .67 }
+  80% { opacity: .8 }
+  91% { opacity: .92 }
+  100% { opacity: 1 }
+}
+
+@keyframes fadein4 {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
 * {
-    background-color: gray;
+  background-color: #28282b;
 }
 
 body, html {
@@ -7,28 +45,113 @@ body, html {
   overflow: hidden;
 }
 
+#welcome {
+  display: flex;
+  justify-content: space-around;
+}
+
+.welcome-letters {
+  font-family: 'Rubik Bubbles', sans-serif;
+  color: #b59f84;
+  font-size: 8em;
+}
+
+#w {
+  margin-top: 120px;
+  animation-name: fadein;
+  animation-duration: 14s;
+}
+
+#e {
+  margin-top: 60px;
+  animation-name: fadein2;
+  animation-duration: 13s;
+}
+
+#l {
+  margin-top: 100px;
+  animation-name: fadein3;
+  animation-duration: 20s
+}
+
+#c {
+  margin-top: 130px;
+  animation-name: fadein3;
+  animation-duration: 18s
+}
+
+#o {
+  margin-top: 200px;
+  animation-name: fadein;
+  animation-duration: 14s;
+}
+
+#m {
+  margin-top: 80px;
+  animation-name: fadein2;
+  animation-duration: 9s
+}
+
+#e {
+  margin-top: 70px;
+  animation-name: fadein;
+  animation-duration: 12s
+}
+
+#spuds-lair-text {
+  text-align: center;
+  font-size: 4em;
+  margin-top: -20px;
+  font-family: 'Silkscreen', serif;
+  animation-name: fadein4;
+  animation-duration: 4s;
+  animation-timing-function: ease-out;
+  color: #b59f84;
+}
+
+#website-options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.entry-buttons {
+  font-size: 2em;
+  width: 350px;
+  height: 150px;
+  background-color: #b59f84;
+  font-family: 'Silkscreen', serif;
+  animation-name: fadein4;
+  animation-duration: 4s;
+  animation-timing-function: ease-out;
+}
+
+.entry-buttons:hover {
+  cursor: pointer;
+  background-color: #33cc33;
+}
+
 .tile, .offshoot-tile-left, .offshoot-tile-right, .terminal {
-    width: 100px;
-    height: 100px;
-    border: solid black 1px;
+    width: 200px;
+    height: 200px;
+    border: solid black 2px;
 }
 
 .tile, .offshoot-tile-left, .offshoot-tile-right {
-    background-color: white
+    background-color: #b59f84;
 }
 
 .terminal {
-    background-color: green
+    background-color: #ad242c;
 }
 
 #main-hallway {
     position: absolute;
-    left: 612px;
+    left: 1224px;
     top: 0px;
     display: flex;
     flex-direction: column;
     padding: 0;
-    width: 120px;
+    width: 240px;
 }
 
 #left-offshoot-hallways {
@@ -39,18 +162,18 @@ body, html {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    height: 3300px
+    height: 6600px
 }
 
 #right-offshoot-hallways {
     position: absolute;
     top: 0;
-    left: 714px;
+    left: 1428px;
     justify-self: start;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    height: 3300px
+    height: 6600px
 }
 
 .offshoot-right {
@@ -66,34 +189,35 @@ body, html {
 }
 
 #spud {
-    width: 80px;
-    height: 80px;
+    width: 160px;
+    height: 160px;
+    mix-blend-mode: multiply;
     background-color: white;
     z-index: 1;
-    margin-top: -90px;
-    margin-left: 10px;
+    margin-top: -180px;
+    margin-left: 20px;
     position: absolute;
     border: solid white 2px;
 }
 
 #offshoot-2 {
-  margin-top: 510px;
-}
-
-#offshoot-3 {
-  margin-top: 408px;
-}
-
-#offshoot-6 {
-  margin-top: 204px;
-}
-
-#offshoot-8 {
   margin-top: 612px;
 }
 
+#offshoot-3 {
+  margin-top: 1020px;
+}
+
+#offshoot-6 {
+  margin-top: 612px;
+}
+
+#offshoot-8 {
+  margin-top: 816px;
+}
+
 #offshoot-9 {
-  margin-top: 510px;
+  margin-top: 612px;
 }
 
 #offshoot-1 {
@@ -105,15 +229,15 @@ body, html {
 }
 
 #offshoot-5 {
-  margin-top: 510px;
+  margin-top: 816px;
 }
 
 #offshoot-7 {
-  margin-top: 612px;
+  margin-top: 816px;
 }
 
 #offshoot-10 {
-  margin-top: 306px;
+  margin-top: 408px;
 }
 
 #direction-arrows-updown, #direction-arrows-leftright {
@@ -127,11 +251,14 @@ body, html {
 #direction-arrows-updown {
   margin-right: 70px;
   width: 50px;
-  z-index: 2
+  z-index: 2;
+  background: none;
 }
 
 #direction-arrows-leftright {
   margin-bottom: 50px;
+  z-index: 1;
+  background: none
 }
 
 .direction-button {
@@ -157,4 +284,54 @@ body, html {
 #right-arrow {
   background-color: #7df9ff;
   margin-left: 70px;
+}
+
+.terminal-window {
+  width: 450px;
+  height: 250px;
+  border: solid #013220 12px;
+  background-color: #33cc33;
+  margin-top: -275px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.terminal-window-header {
+   text-align: center;
+   background-color: #33cc33;
+   font-family: 'Silkscreen', serif;
+}
+
+.terminal-window-explanation {
+   text-align: center;
+   background-color: #33cc33;
+   font-family: 'Silkscreen', serif;
+}
+
+.terminal-window-button {
+  text-align: center;
+  background-color: #b59f84;
+  font-family: 'Silkscreen', serif;
+  width: 40%;
+}
+
+.terminal-window-button:hover {
+  cursor: pointer;
+  background-color: #ad242c;
+}
+
+.cat-images, .food-images {
+  width: 100px;
+  height: 100px;
+  margin-top: 40px;
+}
+
+#spuds-stuff-explanation, #spuds-songs-explanation {
+  margin-top: 30px;
+}
+
+#spuds-stuff-button, #spuds-songs-button, #spuds-ship-button, #feed-pharoah-button, #feed-gunther-button {
+  margin-top: 30px;
 }
