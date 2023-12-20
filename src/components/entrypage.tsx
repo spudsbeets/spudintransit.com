@@ -2,6 +2,13 @@ import '../App.css'
 import FunPath from '../components/funpath'
 import BoringPath from '../components/boringpath'
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CocktailClash from './cocktailclash'
+import SpudsShip from './spudsship'
+import SpudsSongs from './spudssongs'
+import SpudsStuff from './spudsstuff'
+import SpudsSnipsTuesday from './spudssnipstuesday'
+import SpudsSnipsWednesday from './spudssnipswednesday'
 
 const EntryPage = () => {
 
@@ -26,12 +33,23 @@ const EntryPage = () => {
      <button className="entry-buttons"id="boring-path-button" onClick={() => setPathSelected("boring-path")}>boring path (easier to navigate...)</button>
     </div>
    </div>    
-    : pathSelected === "fun-path" ? <FunPath />
+    : pathSelected === "fun-path" || pathSelected === "cocktail-clash" ? <FunPath />
     : <BoringPath />
 
     return(
         <>
-      {pageContent}
+      <BrowserRouter>
+      <Routes>
+      <Route path="/" element={
+      pageContent}></Route>
+      <Route path="/cocktailclash" element={<CocktailClash />}></Route>
+      <Route path="/spudsship" element={<SpudsShip />}></Route>
+      <Route path="/spudssongs" element={<SpudsSongs />}></Route>
+      <Route path="/spudsstuff" element={<SpudsStuff />}></Route>
+      <Route path="/spudssnipstuesday" element={<SpudsSnipsTuesday />}></Route>
+      <Route path="/spudssnipswednesday" element={<SpudsSnipsWednesday />}></Route>
+      </Routes>
+      </BrowserRouter>
         </>
     )
 }

@@ -1,12 +1,30 @@
 import '../App.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import MarginObject from '../misc/types'
-import CocktailClash from './cocktailclash'
-import { terminalWindowContent } from '../misc/terminalWindowContent'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
+import CocktailClashWindow from '../components/terminalWindows/cocktailclashwindow'
+import SpudsShipWindow from '../components/terminalWindows/spudsshipwindow'
+import SpudsSongsWindow from '../components/terminalWindows/spudssongswindow'
+import SpudsStuffWindow from '../components/terminalWindows/spudsstuffwindow'
+import SpudsSnipsTuesdayWindow from '../components/terminalWindows/spudssnipstuesdaywindow'
+import SpudsSnipsWednesdayWindow from '../components/terminalWindows/spudssnipswednesdaywindow'
+import FeedPharoahWindow from '../components/terminalWindows/feedpharoahwindow'
+import FeedGuntherWindow from '../components/terminalWindows/feedguntherwindow'
+import RetrievePharoahWindow from './terminalWindows/retrievepharoahwindow'
+import RetrieveGuntherWindow from './terminalWindows/retrieveguntherwindow'
 
 const FunPath = () => {
+
+  const [showCCTerminal, setShowCCTerminal] = useState<boolean>(false)
+  const [showSpudsShipTerminal, setShowSpudsShipTerminal] = useState<boolean>(false)
+  const [showSpudsSongsTerminal, setShowSpudsSongsTerminal] = useState<boolean>(false)
+  const [showSpudsStuffTerminal, setShowSpudsStuffTerminal] = useState<boolean>(false)
+  const [showTuesdayTerminal, setShowTuesdayTerminal] = useState<boolean>(false)
+  const [showWednesdayTerminal, setShowWednesdayTerminal] = useState<boolean>(false)
+  const [showFeedPTerminal, setShowFeedPTerminal] = useState<boolean>(false)
+  const [showFeedGTerminal, setShowFeedGTerminal] = useState<boolean>(false)
+  const [showGetPTerminal, setShowGetPTerminal] = useState<boolean>(false)
+  const [showGetGTerminal, setShowGetGTerminal] = useState<boolean>(false)
 
   const regex: RegExp = /\d|-/g
 
@@ -95,29 +113,36 @@ const FunPath = () => {
       if (spudCss.marginTop === el.marginTop && spudCss.marginLeft === el.marginLeft) {
         const thisTerminal = document.getElementById(el.correlatedTerminal as string) as HTMLDivElement;
         thisTerminal.style.backgroundColor = "#33cc33"
-        let blankTerminalWindow = document.createElement('div')
-        blankTerminalWindow.setAttribute("class", "terminal-window")
-        thisTerminal.appendChild(blankTerminalWindow)
         if (el.correlatedTerminal === "spuds-ship") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[0].content
+          (document.getElementById("spuds-ship-window") as HTMLDivElement).style.display = "flex"
+          setShowSpudsShipTerminal(true)
         } else if (el.correlatedTerminal === "spuds-songs") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[1].content
+          (document.getElementById("spuds-songs-window") as HTMLDivElement).style.display = "flex"
+          setShowSpudsSongsTerminal(true)
         } else if (el.correlatedTerminal === "spuds-snips-wednesday") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[2].content
+          (document.getElementById("spuds-snips-wednesday-window") as HTMLDivElement).style.display = "flex"
+          setShowWednesdayTerminal(true)
         } else if (el.correlatedTerminal === "retrieve-gunther") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[3].content
+          (document.getElementById("retrieve-gunther-window") as HTMLDivElement).style.display = "flex"
+          setShowGetGTerminal(true)
         } else if (el.correlatedTerminal === "cocktail-clash") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[4].content
+          (document.getElementById("cocktail-clash-window") as HTMLDivElement).style.display = "flex";
+          setShowCCTerminal(true)
         } else if (el.correlatedTerminal === "spuds-stuff") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[6].content
+          (document.getElementById("spuds-stuff-window") as HTMLDivElement).style.display = "flex"
+          setShowSpudsStuffTerminal(true)
         } else if (el.correlatedTerminal === "spuds-snips-tuesday") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[7].content
+          (document.getElementById("spuds-snips-tuesday-window") as HTMLDivElement).style.display = "flex"
+          setShowTuesdayTerminal(true)
         } else if (el.correlatedTerminal === "retrieve-pharoah") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[5].content
+          (document.getElementById("retrieve-pharoah-window") as HTMLDivElement).style.display = "flex"
+          setShowGetPTerminal(true)
         } else if (el.correlatedTerminal === "feed-gunther") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[9].content
+          (document.getElementById("feed-gunther-window") as HTMLDivElement).style.display = "flex"
+          setShowFeedGTerminal(true)
         } else if (el.correlatedTerminal === "feed-pharoah") {
-          blankTerminalWindow.innerHTML = terminalWindowContent[8].content
+          (document.getElementById("feed-pharoah-window") as HTMLDivElement).style.display = "flex"
+          setShowFeedPTerminal(true)
         }
       }})
   }
@@ -171,19 +196,15 @@ const FunPath = () => {
     }
     if (event.key === "ArrowLeft") {
       const offshootLeftDivs: HTMLCollectionOf<Element> = document.getElementsByClassName("offshoot-tile-left")
+      const terminalWindows = document.getElementsByClassName("terminal-window")
       getDefaultMargs().rightOffshootMargins.forEach((el) => {
         if (spudCss.marginTop === el.marginTop && spudCss.marginLeft === el.marginLeft) {
-          const terminalWindows = document.getElementsByClassName("terminal-window");
           for (let i = 0; i < terminalWindows.length; i++) {
-            terminalWindows[i].remove()
+            (terminalWindows[i] as HTMLDivElement).style.display = "none"
           }
         }
       })
-      const terminalWindows = document.getElementsByClassName("terminal-window")
-        if (terminalWindows.length > 0) {
-          event.preventDefault()
-        } else {
-          for (let i = 0; i < offshootLeftDivs.length; i++) {
+        for (let i = 0; i < offshootLeftDivs.length; i++) {
           const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
           if (spud.getBoundingClientRect().left - offshootLeftDivs[i].getBoundingClientRect().right < 40 
           && spud.getBoundingClientRect().left - offshootLeftDivs[i].getBoundingClientRect().right > 0 
@@ -243,23 +264,18 @@ const FunPath = () => {
               checkForTerminal(getDefaultMargs().leftOffshootMargins)          
           }
         }  
-      }
     }
   }
     if (event.key === "ArrowRight") {
       const offshootRightDivs: HTMLCollectionOf<Element> = document.getElementsByClassName("offshoot-tile-right")
+      const terminalWindows = document.getElementsByClassName("terminal-window")
       getDefaultMargs().leftOffshootMargins.forEach((el) => {
         if (spudCss.marginTop === el.marginTop && spudCss.marginLeft === el.marginLeft) {
-          const terminalWindows = document.getElementsByClassName("terminal-window");
           for (let i = 0; i < terminalWindows.length; i++) {
-            terminalWindows[i].remove()
+            (terminalWindows[i] as HTMLDivElement).style.display = "none"
           }
         }
       })
-      const terminalWindows = document.getElementsByClassName("terminal-window")
-        if (terminalWindows.length > 0) {
-          event.preventDefault()
-        } else {
       for (let i = 0; i < offshootRightDivs.length; i++) {
           const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
           if (spud.getBoundingClientRect().left - offshootRightDivs[i].getBoundingClientRect().right > -40 
@@ -319,8 +335,7 @@ const FunPath = () => {
               spud.style.marginLeft = newMarg.toString() + "px";
               checkForTerminal(getDefaultMargs().rightOffshootMargins)
             }   
-          } 
-        }  
+        } 
       } 
     } 
     const spudNewMargLeft = spudCss.marginLeft
@@ -331,17 +346,18 @@ const FunPath = () => {
    })
   },[]);
   
-  return( 
-  <BrowserRouter>
-  <Routes>
-  <Route path='/' element={ 
+  return(
   <div id="lair">
   <div id="left-offshoot-hallways">
     <div id="offshoot-2" className="offshoot-left">
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
-     <div className="terminal" id="spuds-ship"></div>
+     <div className="terminal" id="spuds-ship">{showSpudsShipTerminal && createPortal(
+      <SpudsShipWindow setShowSpudsShipTerminal={setShowSpudsShipTerminal}/>,
+      document.getElementById("spuds-ship-window")!
+     )}</div>
+     <div className="terminal-window" id="spuds-ship-window"></div>
     </div>
     <div id="offshoot-3" className="offshoot-left">
      <div className="offshoot-tile-left"></div>
@@ -349,7 +365,11 @@ const FunPath = () => {
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
-     <div className="terminal" id="spuds-songs"></div>
+     <div className="terminal" id="spuds-songs">{showSpudsSongsTerminal && createPortal(
+      <SpudsSongsWindow setShowSpudsSongsTerminal={setShowSpudsSongsTerminal}/>,
+      document.getElementById("spuds-songs-window")!
+     )}</div>
+     <div className="terminal-window" id="spuds-songs-window"></div>
     </div> 
     <div id="offshoot-6" className="offshoot-left">
      <div className="offshoot-tile-left"></div>
@@ -357,19 +377,31 @@ const FunPath = () => {
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
-     <div className="terminal" id="spuds-snips-wednesday"></div>
+     <div className="terminal" id="spuds-snips-wednesday">{showWednesdayTerminal && createPortal(
+      <SpudsSnipsWednesdayWindow setShowWednesdayTerminal={setShowWednesdayTerminal}/>,
+      document.getElementById("spuds-snips-wednesday-window")!
+     )}</div>
+     <div className="terminal-window" id="spuds-snips-wednesday-window"></div>
     </div>
     <div id="offshoot-8" className="offshoot-left">
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
-     <div className="terminal" id="retrieve-gunther"></div>
+     <div className="terminal" id="retrieve-gunther">{showGetGTerminal && createPortal(
+      <RetrieveGuntherWindow setShowGetGTerminal={setShowGetGTerminal}/>,
+      document.getElementById("retrieve-gunther-window")!
+     )}</div>
+     <div className="terminal-window" id="retrieve-gunther-window"></div>
     </div>
     <div id="offshoot-9" className="offshoot-left">
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
      <div className="offshoot-tile-left"></div>
-     <div className="terminal" id="cocktail-clash"></div>
+     <div className="terminal" id="cocktail-clash">{showCCTerminal && createPortal(
+      <CocktailClashWindow setShowCCTerminal={setShowCCTerminal}/>,
+      document.getElementById("cocktail-clash-window")!
+     )}</div>
+     <div className="terminal-window" id="cocktail-clash-window"></div>
     </div>               
   </div>
   <div id="main-hallway">
@@ -442,23 +474,39 @@ const FunPath = () => {
      <div className="offshoot-tile-right"></div>
      <div className="offshoot-tile-right"></div>
      <div className="offshoot-tile-right"></div>
-     <div className="terminal" id="feed-gunther"></div>
+     <div className="terminal" id="feed-gunther">{showFeedGTerminal && createPortal(
+      <FeedGuntherWindow setShowFeedGTerminal={setShowFeedGTerminal}/>,
+      document.getElementById("feed-gunther-window")!
+     )}</div>
+     <div className="terminal-window" id="feed-gunther-window"></div>
     </div> 
     <div id="offshoot-4" className="offshoot-right">
      <div className="offshoot-tile-right"></div>
      <div className="offshoot-tile-right"></div>
-     <div className="terminal" id="feed-pharoah"></div>
+     <div className="terminal" id="feed-pharoah">{showFeedPTerminal && createPortal(
+      <FeedPharoahWindow setShowFeedPTerminal={setShowFeedPTerminal}/>,
+      document.getElementById("feed-pharoah-window")!
+     )}</div>
+     <div className="terminal-window" id="feed-pharoah-window"></div>
     </div> 
     <div id="offshoot-5" className="offshoot-right">
      <div className="offshoot-tile-right"></div>
      <div className="offshoot-tile-right"></div>
      <div className="offshoot-tile-right"></div>
-     <div className="terminal" id="spuds-snips-tuesday"></div>
+     <div className="terminal" id="spuds-snips-tuesday">{showTuesdayTerminal && createPortal(
+      <SpudsSnipsTuesdayWindow setShowTuesdayTerminal={setShowTuesdayTerminal}/>,
+      document.getElementById("spuds-snips-tuesday-window")!
+     )}</div>
+     <div className="terminal-window" id="spuds-snips-tuesday-window"></div>
     </div> 
     <div id="offshoot-7" className="offshoot-right">
      <div className="offshoot-tile-right"></div>
      <div className="offshoot-tile-right"></div>
-     <div className="terminal" id="spuds-stuff"></div>
+     <div className="terminal" id="spuds-stuff">{showSpudsStuffTerminal && createPortal(
+      <SpudsStuffWindow setShowSpudsStuffTerminal={setShowSpudsStuffTerminal}/>,
+      document.getElementById("spuds-stuff-window")!
+     )}</div>
+     <div className="terminal-window" id="spuds-stuff-window"></div>
     </div>
     <div id="offshoot-10" className="offshoot-right">
      <div className="offshoot-tile-right"></div>
@@ -466,13 +514,14 @@ const FunPath = () => {
      <div className="offshoot-tile-right"></div>
      <div className="offshoot-tile-right"></div>
      <div className="offshoot-tile-right"></div>
-     <div className="terminal" id="retrieve-pharoah"></div>
+     <div className="terminal" id="retrieve-pharoah">{showGetPTerminal && createPortal(
+      <RetrievePharoahWindow setShowGetPTerminal={setShowGetPTerminal}/>,
+      document.getElementById("retrieve-pharoah-window")!
+     )}</div>
+     <div className="terminal-window" id="retrieve-pharoah-window"></div>
     </div>                 
   </div>
-  </div>}></Route>
-  <Route path='/cocktailclash' element={<CocktailClash />}></Route>
-  </Routes>
-  </BrowserRouter>
+  </div>
   )
 }
 
