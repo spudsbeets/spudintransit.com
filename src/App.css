@@ -36,6 +36,79 @@
   100% { opacity: 1 }
 }
 
+@keyframes tuemove {
+  0% { margin-top: 0px }
+  22% { margin-top: 80px }
+  40% { margin-top: 220px }
+  74% { margin-top: 89px }
+  100% { margin-top: 0px }
+}
+
+@keyframes tuemove2 {
+  0% { margin-top: 36px }
+  9% { margin-top: 99px }
+  37% { margin-top: 84px }
+  51% { margin-top: 300px }
+  100% { margin-top: 36px }
+}
+
+@keyframes tuemove3 {
+  0% { margin-top: 70px }
+  19% { margin-top: 155px }
+  41% { margin-top: 261px }
+  60% { margin-top: 340px }
+  100% { margin-top: 70px }
+}
+
+@keyframes tuemove4 {
+  0% { margin-top: 83px }
+  30% { margin-top: 143px }
+  55% { margin-top: 3px }
+  100% { margin-top: 83px }
+}
+
+@keyframes tuemove5 {
+  0% { margin-top: 127px }
+  60% { margin-top: 327px } 
+  100% { margin-top: 127px }
+}
+
+@keyframes tuemove6 {
+  0% { margin-top: 168px }
+  70% { margin-top: 44px }
+  90% { margin-top: 244px }
+  100% { margin-top: 168px }
+}
+
+@keyframes tuemove7 {
+  0% { margin-top: 221px }
+  12% { margin-top: 291px }
+  44% { margin-top: 161px }
+  69% { margin-top: 103px }
+  100% { margin-top: 221px }
+}
+
+@keyframes tuemove8 {
+  0% { margin-top: 253px }
+  30% { margin-top: 23px }
+  53% { margin-top: 203px }
+  100% { margin-top: 253px }
+}
+
+@keyframes tuemove9 {
+  0% { margin-top: 291px }
+  20% { margin-top: 347px }
+  70% { margin-top: 107px }
+  100% { margin-top: 291px }
+}
+
+@keyframes tuemove10 {
+  0% { margin-top: 320px }
+  23% { margin-top: 300px }
+  81% { margin-top: 80px }
+  100% { margin-top: 320px }
+}
+
 * {
   background-color: #28282b;
 }
@@ -128,6 +201,21 @@ body, html {
 .entry-buttons:hover {
   cursor: pointer;
   background-color: #33cc33;
+}
+
+.home-button {
+  position: fixed;
+  top: 5;
+  left: 5;
+  font-size: 1.2em;
+  background-color: #b59f84;
+  font-family: 'Silkscreen', serif;
+  z-index: 5
+}
+
+.home-button:hover {
+  cursor: pointer;
+  background-color: #ad242c
 }
 
 .tile, .offshoot-tile-left, .offshoot-tile-right, .terminal {
@@ -362,7 +450,7 @@ body, html {
   animation-timing-function: ease-out;
 }
 
-.terminal-window-header {
+.terminal-window-header, .song-page-header {
    text-align: center;
    background-color: #33cc33;
    font-family: 'Silkscreen', serif;
@@ -405,4 +493,244 @@ body, html {
   width: 100px;
   height: 100px;
   margin-top: 40px;
+}
+
+#spuds-snips-tuesday-component, #tuesday-snips-header, #spuds-snips-tuesday-button-area, #spuds-snips-tuesday-name-area, #spuds-songs-component, #song-arrows-div, .song-page, #songs-content, .release-divs, .release-title, #props-links, #craig-props-div, #spencer-props-div {
+  background-color: #33cc33;
+}
+
+#spuds-snips-tuesday-component {
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 700px;
+  border: 20px ridge #057405;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#spuds-songs-component {
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 700px;
+  border: 20px ridge #057405;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap
+}
+
+#songs-content {
+  width: 100%;
+  height: 90%;
+}
+
+#song-arrows-div {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between
+}
+
+#tuesday-snips-header, #spuds-snips-tuesday-name-area, .tuesday-buttons {
+  font-family: 'Silkscreen', serif;
+}
+
+#tuesday-snips-header, #spuds-snips-tuesday-name-area {
+  text-align: center;
+}
+
+#spuds-snips-tuesday-button-area {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#tuesday-snips-header {
+  font-size: 4em;
+  background-color: #057405;
+  border: 10px inset #014801;
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#spuds-snips-tuesday-name-area {
+  font-size: 1.5em;
+  background-color: #057405;
+  padding-top: 1%
+}
+
+.tuesday-buttons {
+  background-color: #014801;
+  font-size: 3em;
+  height: 100px;
+  width: 100px;
+  border: 15px inset #057405;
+  text-align: center;
+  border-radius: 20%;
+  opacity: 0;
+  animation-iteration-count: infinite;
+}
+
+.tuesday-buttons:hover {
+  cursor: pointer;
+  background-color: #ad242c;
+  border: 15px outset #730e15;
+}
+
+#spuds-songs-component {
+  display: flex;
+  flex-direction: row;
+}
+
+.song-arrows, .song-arrows:hover:disabled {
+  background-color: #014801;
+}
+
+.song-arrows:hover {
+  background-color: #ad242c;
+  cursor: pointer
+}
+
+.song-arrows {
+  width: 80px;
+  height: 60px;
+  font-size: 2em;
+}
+
+#song-arrow-left {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+#song-arrow-right {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.song-page-header {
+  font-size: 4em;
+}
+
+#release-images-div {
+  background-color: #33cc33;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+
+.release-image {
+  width: 300px;
+  height: 300px;
+  border: 10px inset #057405;
+}
+
+/* remove next two lines on release date */
+
+#tuesday-with-gp, #wednesday-with-gp, #tuesday-with-gp-title, #wednesday-with-gp-title, #tuesday-with-gp-explanation, #wednesday-with-gp-explanation {
+  filter: blur(1em)
+}
+
+#tuesday-with-gp-explanation-div, #wednesday-with-gp-explanation-div {
+  background-color: transparent;
+}
+
+.release-title {
+  font-family: 'Silkscreen', serif;
+  text-align: center;
+  max-width: 300px
+}
+
+.release-explanation-div {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  background-color: #33cc33;
+  margin-top: -270px;
+  margin-left: 10px;
+  text-align: center;
+  opacity: 0
+}
+
+.release-explanation-div:hover {
+  opacity: .8;
+  cursor: pointer
+}
+
+.release-explanation {
+  font-family: 'Silkscreen', serif;
+  background-color: transparent;
+  opacity: 1
+}
+
+.link-images {
+  max-width: 300px;
+  max-height: 210px;
+  background-color: #057405;
+  border: 10px inset #013220;
+}
+
+.link-images:hover {
+  opacity: .6;
+  background-color: #ad242c;
+  border: 10px inset #730e15
+}
+
+#spotify-image {
+  margin-top: 160px;
+}
+
+#soundcloud-image {
+  margin-top: 100px;
+}
+
+#bandcamp-image {
+  margin-top: -50px;
+}
+
+#links-div {
+  background-color: #33cc33;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+
+.links-anchors, .props-anchors {
+  background-color: transparent
+}
+
+.props-image {
+  max-width: 300px;
+  max-height: 300px;
+  background-color: #057405;
+  border: 10px inset #013220;
+  margin-top: -20px;
+}
+
+.props-image:hover {
+  opacity: .6;
+  border: 10px inset #730e15  
+}
+
+#props-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around
+}
+
+#spencer-props-div {
+  margin-top: 160px;
+}
+
+.props-explanation {
+  font-family: 'Silkscreen', serif;
+  background-color: #33cc33;
+  text-align: center;
+  max-width: 300px;
 }

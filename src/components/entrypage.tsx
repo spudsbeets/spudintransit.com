@@ -3,8 +3,6 @@ import FunPath from '../components/funpath'
 import BoringPath from '../components/boringpath'
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import CocktailClash from './cocktailclash'
-import SpudsShip from './spudsship'
 import SpudsSongs from './spudssongs'
 import SpudsStuff from './spudsstuff'
 import SpudsSnipsTuesday from './spudssnipstuesday'
@@ -42,8 +40,6 @@ const EntryPage = () => {
       <Routes>
       <Route path="/" element={
       pageContent}></Route>
-      <Route path="/cocktailclash" element={<CocktailClash />}></Route>
-      <Route path="/spudsship" element={<SpudsShip />}></Route>
       <Route path="/spudssongs" element={<SpudsSongs />}></Route>
       <Route path="/spudsstuff" element={<SpudsStuff />}></Route>
       <Route path="/spudssnipstuesday" element={<SpudsSnipsTuesday />}></Route>

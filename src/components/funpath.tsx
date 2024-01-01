@@ -2,14 +2,14 @@ import '../App.css'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import MarginObject from '../misc/types'
-import CocktailClashWindow from '../components/terminalWindows/cocktailclashwindow'
-import SpudsShipWindow from '../components/terminalWindows/spudsshipwindow'
-import SpudsSongsWindow from '../components/terminalWindows/spudssongswindow'
-import SpudsStuffWindow from '../components/terminalWindows/spudsstuffwindow'
-import SpudsSnipsTuesdayWindow from '../components/terminalWindows/spudssnipstuesdaywindow'
-import SpudsSnipsWednesdayWindow from '../components/terminalWindows/spudssnipswednesdaywindow'
-import FeedPharoahWindow from '../components/terminalWindows/feedpharoahwindow'
-import FeedGuntherWindow from '../components/terminalWindows/feedguntherwindow'
+import CocktailClashWindow from './terminalWindows/cocktailclashwindow'
+import SpudsShipWindow from './terminalWindows/spudsshipwindow'
+import SpudsSongsWindow from './terminalWindows/spudssongswindow'
+import SpudsStuffWindow from './terminalWindows/spudsstuffwindow'
+import SpudsSnipsTuesdayWindow from './terminalWindows/spudssnipstuesdaywindow'
+import SpudsSnipsWednesdayWindow from './terminalWindows/spudssnipswednesdaywindow'
+import FeedPharoahWindow from './terminalWindows/feedpharoahwindow'
+import FeedGuntherWindow from './terminalWindows/feedguntherwindow'
 import RetrievePharoahWindow from './terminalWindows/retrievepharoahwindow'
 import RetrieveGuntherWindow from './terminalWindows/retrieveguntherwindow'
 
@@ -404,6 +404,7 @@ const FunPath = () => {
      <div className="terminal-window" id="cocktail-clash-window"></div>
     </div>               
   </div>
+  <button className="home-button" onClick={() => location.reload()}>home</button>
   <div id="main-hallway">
      <div className="tile"></div>
      <div className="tile"></div>
