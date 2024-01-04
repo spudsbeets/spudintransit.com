@@ -109,6 +109,29 @@
   100% { margin-top: 320px }
 }
 
+@keyframes rotateClockwise {
+  0% { transform: rotateZ(0deg) }
+  50% { transform: rotateZ(360deg) }
+  100% { transform: rotateZ(0deg) }
+}
+
+@keyframes rotateCounterClockwise {
+  0% { transform: rotateZ(0deg) }
+  50% { transform: rotateZ(-360deg) } 
+  100% { transform: rotateZ(0deg) } 
+}
+
+@keyframes buttonMovement {
+  0% { margin-top: 200px; margin-right: 0px }
+  16% { margin-top: -350px; margin-right: 0px }
+  32% { margin-top: -350px; margin-right: 1000px }
+  48% { margin-top: 400px; margin-right: 1000px }
+  64% { margin-top: 400px; margin-right: -1000px }
+  80% { margin-top: -350px; margin-right: -1000px } 
+  92% { margin-top: -350px; margin-right: -400px }
+  100% { margin-top: 200px; margin-right: 0px }
+}
+
 * {
   background-color: #28282b;
 }
@@ -450,7 +473,7 @@ body, html {
   animation-timing-function: ease-out;
 }
 
-.terminal-window-header, .song-page-header {
+.terminal-window-header, .song-page-header, .stuff-page-header {
    text-align: center;
    background-color: #33cc33;
    font-family: 'Silkscreen', serif;
@@ -495,11 +518,11 @@ body, html {
   margin-top: 40px;
 }
 
-#spuds-snips-tuesday-component, #tuesday-snips-header, #spuds-snips-tuesday-button-area, #spuds-snips-tuesday-name-area, #spuds-songs-component, #song-arrows-div, .song-page, #songs-content, .release-divs, .release-title, #props-links, #craig-props-div, #spencer-props-div {
+#spuds-snips-tuesday-component, #tuesday-snips-header, #spuds-snips-tuesday-button-area, #spuds-snips-tuesday-name-area, #spuds-songs-component, #spuds-stuff-component, #song-arrows-div, #stuff-arrows-div, .song-page, #songs-content, #stuff-content, .release-divs, .release-title, #props-links, #craig-props-div, #spencer-props-div, #spuds-snips-wednesday-component, #wednesday-snips-header, #spuds-snips-wednesday-button-area, #spuds-snips-wednesday-name-area, #various-stuff, .stuff-page {
   background-color: #33cc33;
 }
 
-#spuds-snips-tuesday-component {
+#spuds-snips-tuesday-component, #spuds-snips-wednesday-component {
   width: 80%;
   margin-right: 10%;
   margin-left: 10%;
@@ -510,7 +533,7 @@ body, html {
   justify-content: space-between;
 }
 
-#spuds-songs-component {
+#spuds-songs-component, #spuds-stuff-component {
   width: 80%;
   margin-right: 10%;
   margin-left: 10%;
@@ -521,23 +544,23 @@ body, html {
   flex-wrap: wrap
 }
 
-#songs-content {
+#songs-content, #stuff-content {
   width: 100%;
   height: 90%;
 }
 
-#song-arrows-div {
+#song-arrows-div, #stuff-arrows-div {
   width: 100%;
   height: 10%;
   display: flex;
   justify-content: space-between
 }
 
-#tuesday-snips-header, #spuds-snips-tuesday-name-area, .tuesday-buttons {
+#tuesday-snips-header, #spuds-snips-tuesday-name-area, .tuesday-buttons, #wednesday-snips-header, #spuds-snips-wednesday-name-area, .wednesday-buttons, .stuff-div, .stuff-page-link-title, #resume-img-link, #bio, #email {
   font-family: 'Silkscreen', serif;
 }
 
-#tuesday-snips-header, #spuds-snips-tuesday-name-area {
+#tuesday-snips-header, #spuds-snips-tuesday-name-area, #wednesday-snips-header, #spuds-snips-wednesday-name-area, .stuff-header, .stuff-page-link-title {
   text-align: center;
 }
 
@@ -549,6 +572,17 @@ body, html {
   justify-content: space-evenly;
 }
 
+#spuds-snips-wednesday-button-area {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
 #tuesday-snips-header {
   font-size: 4em;
   background-color: #057405;
@@ -558,7 +592,16 @@ body, html {
   margin-left: auto;
 }
 
-#spuds-snips-tuesday-name-area {
+#wednesday-snips-header {
+  font-size: 3em;
+  background-color: #057405;
+  border: 10px inset #014801;
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto
+}
+
+#spuds-snips-tuesday-name-area, #spuds-snips-wednesday-name-area {
   font-size: 1.5em;
   background-color: #057405;
   padding-top: 1%
@@ -576,13 +619,25 @@ body, html {
   animation-iteration-count: infinite;
 }
 
-.tuesday-buttons:hover {
-  cursor: pointer;
-  background-color: #ad242c;
-  border: 15px outset #730e15;
+.wednesday-buttons {
+  position: absolute;
+  background-color: #014801;
+  font-size: 3.5em;
+  height: 120px;
+  width: 120px;
+  border: 17px inset #057405;
+  text-align: center;
+  border-radius: 20%;
+  margin-top: 200px
 }
 
-#spuds-songs-component {
+.tuesday-buttons:hover, .wednesday-buttons:hover {
+  cursor: pointer;
+  background-color: #ad242c;
+  border: 17px outset #730e15;
+}
+
+#spuds-songs-component, #spuds-stuff-component {
   display: flex;
   flex-direction: row;
 }
@@ -602,17 +657,17 @@ body, html {
   font-size: 2em;
 }
 
-#song-arrow-left {
+#song-arrow-left, #stuff-arrow-left {
   margin-left: 20px;
   margin-bottom: 20px;
 }
 
-#song-arrow-right {
+#song-arrow-right, #stuff-arrow-right {
   margin-right: 20px;
   margin-bottom: 20px;
 }
 
-.song-page-header {
+.song-page-header, .stuff-page-header {
   font-size: 4em;
 }
 
@@ -733,4 +788,191 @@ body, html {
   background-color: #33cc33;
   text-align: center;
   max-width: 300px;
+}
+
+#another-sunrise-button {
+  animation: rotateClockwise 20s linear 100, buttonMovement 50s linear 100
+}
+
+#catnip-button {
+  animation: rotateCounterClockwise 20s linear 100, buttonMovement 50s linear 5s 100
+}
+
+#machine-elves-button {
+  animation: rotateClockwise 20s linear 100, buttonMovement 50s linear 10s 100
+}
+
+#leviathan-button {
+  animation: rotateCounterClockwise 20s linear 100, buttonMovement 50s linear 15s 100
+}
+
+#behemoth-button {
+  animation: rotateClockwise 20s linear 100, buttonMovement 50s linear 20s 100
+}
+
+#space-dragon-button {
+  animation: rotateCounterClockwise 20s linear 100, buttonMovement 50s linear 25s 100
+}
+
+#another-dinner-button {
+  animation: rotateClockwise 20s linear 100, buttonMovement 50s linear 30s 100
+}
+
+#watching-more-cars-button {
+  animation: rotateCounterClockwise 20s linear 100, buttonMovement 50s linear 35s 100
+}
+
+#another-perfect-blanket-button {
+  animation: rotateClockwise 20s linear 100, buttonMovement 50s linear 40s 100
+}
+
+#outro-button {
+  animation: rotateCounterClockwise 20s linear 100, buttonMovement 50s linear 45s 100
+}
+
+#various-stuff {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.stuff-div {
+  border: 20px inset #013220;
+  background-color: #057405
+}
+
+.stuff-header {
+  font-size: 2em;
+  background-color: #057405
+}
+
+.stuff-list {
+  width: 300px;
+  background-color: #057405;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between
+}
+
+.stuff-list-item {
+  font-size: 1.3em;
+  background-color: #057405
+}
+
+.stuff-list-logo {
+  max-height: 40px;
+  max-width: 40px;
+  background-color: #057405;
+  margin-left: 15px;
+  padding-top: 5px;
+}
+
+#language-logo {
+  max-height: 20px;
+  max-width: 20px
+}
+
+#misc-stuff-list > li {
+  padding-bottom: 15px;
+}
+
+#music-stuff-list > li {
+  padding-bottom: 20px;
+  padding-top: 30px;  
+}
+
+#programming-stuff-list {
+  margin-top: -10px
+}
+
+#programming-stuff-list > li {
+  padding-top: 5px;
+}
+
+#ableton-logo, #tailwind-logo {
+  max-width: 200px;
+  max-height: 30px;
+}
+
+#writing-list-item {
+  margin-top: -15px;
+}
+
+#gamer-list-item {
+  margin-top: -5px;
+}
+
+.stuff-page-link-img {
+  max-height: 200px;
+  max-width: 200px;
+  background-color: #057405
+}
+
+#stuff-page-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #33cc33;
+  margin-top: 100px;
+}
+
+.stuff-page-link-div, .stuff-page-link-title, .stuff-link-anchors {
+  background-color: #057405;
+  text-decoration: none;
+  color: black;
+}
+
+.stuff-page-link-title {
+  font-size: 2em;
+}
+
+.stuff-page-link-div {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 20px inset #013220
+}
+
+.stuff-page-link-div:hover, .stuff-page-link-div:hover > h1, .stuff-page-link-div:hover > img, .stuff-page-link-div:hover > h3 {
+  cursor: pointer;
+  background-color: #ad242c
+}
+
+.stuff-page-link-div:hover {
+  border: 20px inset #730e15
+}
+
+#resume-img-link {
+  font-size: 3em;
+  padding-top: 50px;
+}
+
+#github-img-link {
+  padding-top: 50px;
+}
+
+#bio-div, #bio, #email {
+  background-color: #057405;
+}
+
+#bio-div {
+  width: 80%;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  border: 20px inset #014801;
+  margin-top: -20px;
+}
+
+#bio, #email {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+#email {
+  margin-top: 100px;
 }

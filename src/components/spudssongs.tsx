@@ -16,8 +16,7 @@ const SpudsSongs = () => {
     }
 
     type ReducerAction = {
-        type: string,
-        payload?: number
+        type: string
     }
 
     const reducer = (state: SongPageState, action: ReducerAction): SongPageState => {

@@ -74,7 +74,66 @@ tuesday: [
     }
 ],
 wednesday: [
-
+    {
+     key: "A",
+     audio: "./src/misc/snipaudio/dino.wav",
+     name: "Another Sunrise",
+     id: "another-sunrise-button"
+    },
+    {
+     key: "C",
+     audio: "./src/misc/snipaudio/growl.wav",
+     name: "Catnip",
+     id: "catnip-button"
+    },
+    {
+     key: "M",
+     audio: "./src/misc/snipaudio/growl.wav",
+     name: "Machine Elves",
+     id: "machine-elves-button"
+    },
+    {
+     key: "L",
+     audio: "./src/misc/snipaudio/dino.wav",
+     name: "Leviathan",
+     id: "leviathan-button"
+    },
+    {
+     key: "B",
+     audio: "./src/misc/snipaudio/growl.wav",
+     name: "Behemoth",
+     id: "behemoth-button"
+    },
+    {
+     key: "S",
+     audio: "./src/misc/snipaudio/dino.wav",
+     name: "Space Dragon",
+     id: "space-dragon-button"
+    },
+    {
+     key: "D",
+     audio: "./src/misc/snipaudio/growl.wav",
+     name: "Another Dinner",
+     id: "another-dinner-button"
+    },
+    {
+     key: "W",
+     audio: "./src/misc/snipaudio/dino.wav",
+     name: "Watching More Cars",
+     id: "watching-more-cars-button"
+    },
+    {
+     key: "P",
+     audio: "./src/misc/snipaudio/growl.wav",
+     name: "Another Perfect Blanket",
+     id: "another-perfect-blanket-button"
+    },
+    {
+     key: "O",
+     audio: "./src/misc/snipaudio/dino.wav",
+     name: "Outro",
+     id: "outro-button"
+    }
 ]
 }
 
