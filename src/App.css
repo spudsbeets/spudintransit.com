@@ -132,6 +132,24 @@
   100% { margin-top: 200px; margin-right: 0px }
 }
 
+@keyframes wiggleGunther {
+  0% { transform: rotate(0deg) }
+  25% { transform: rotate(-20deg) }
+  50% { transform: rotate(22deg) }
+  65% { transform: rotate(-8deg) }
+  83% { transform: rotate(10deg) }
+  100% { transform: rotate(0deg) }
+}
+
+@keyframes zoomiePharoah {
+  0% { margin-top: 40px; margin-left: 0px }
+  23% { margin-top: 10px; margin-left: -80px }
+  40% { margin-top: 80px; margin-left: 100px }
+  60% { margin-top: -20px; margin-left: 20px }
+  77% { margin-top: 0px; margin-left: 65px }
+  100% { margin-top: 40px; margin-left: 0px }
+}
+
 * {
   background-color: #28282b;
 }
@@ -516,6 +534,36 @@ body, html {
   width: 100px;
   height: 100px;
   margin-top: 40px;
+  mix-blend-mode: multiply;
+  background-color: white
+}
+
+#gunther-image-follow {
+  z-index: 5;
+  width: 160px;
+  height: 160px;
+  mix-blend-mode: multiply;
+  background-color: white;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 235px;
+  opacity: 0;
+  animation: fadein4 2s ease-in .5s, wiggleGunther 1.5s ease-in-out 2.5s;
+  animation-fill-mode: forwards
+}
+
+#pharoah-image-follow {
+  z-index: 5;
+  width: 160px;
+  height: 160px;
+  mix-blend-mode: multiply;
+  background-color: white;
+  position: absolute;
+  margin-left: -180px;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadein4 1.5s ease-out .5s, wiggleGunther 2.5s ease-in-out 2s;
+  animation-fill-mode: forwards
 }
 
 #spuds-snips-tuesday-component, #tuesday-snips-header, #spuds-snips-tuesday-button-area, #spuds-snips-tuesday-name-area, #spuds-songs-component, #spuds-stuff-component, #song-arrows-div, #stuff-arrows-div, .song-page, #songs-content, #stuff-content, .release-divs, .release-title, #props-links, #craig-props-div, #spencer-props-div, #spuds-snips-wednesday-component, #wednesday-snips-header, #spuds-snips-wednesday-button-area, #spuds-snips-wednesday-name-area, #various-stuff, .stuff-page {

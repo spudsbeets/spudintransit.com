@@ -10,7 +10,7 @@ const StuffPageThree = () => {
                 i go by the artist name spud in transit. 
                 i'm married to a wonderful girl named christina and (if you haven't figured this out already) 
                 we have two cats, gunther and pharoah. we like them a lot. 
-                feel free to reach out to me at the link below if you'd like! cheers!
+                feel free to reach out to me at the email below if you'd like! cheers!
                 </p>
                 <p id="email">email: millersean757@gmail.com</p>
             </div>
