@@ -1,12 +1,14 @@
 type PropsType = {
-    setShowGetPTerminal: React.Dispatch<React.SetStateAction<boolean>>
+    setShowGetPTerminal: React.Dispatch<React.SetStateAction<boolean>>,
+    regex: RegExp,
+    getSpudMargin: number
   }
   
-  const RetrievePharoahWindow = ({ setShowGetPTerminal }: PropsType) => {
+  const RetrievePharoahWindow = ({ setShowGetPTerminal, regex, getSpudMargin }: PropsType) => {
 
     return(
       <>
-      <img className="cat-images" id="pharoah-image" src="./src/images/four.png" alt="pharoah"></img>
+      <img className="cat-images" id="pharoah-image" src="./src/images/pharoah1.png" alt="pharoah"></img>
       <p className="terminal-window-explanation" id="retrieve-pharoah-explanation">meeeow moew meweo mow</p>
       <button className="terminal-window-button" id="retrieve-pharoah-button" onClick={() => {
         (document.getElementById("retrieve-pharoah-explanation") as HTMLElement).innerHTML = "please feed me now ples";
@@ -20,9 +22,17 @@ type PropsType = {
           const pharoahFollow = document.createElement('img');
           pharoahFollow.id = "pharoah-image-follow";
           pharoahFollow.className = "cat-images";
-          (pharoahFollow as HTMLImageElement).src = "./src/images/four.png";
+          (pharoahFollow as HTMLImageElement).src = "./src/images/pharoah1.png";
           (pharoahFollow as HTMLImageElement).alt = "pharoah";
           document.getElementById("retrieve-pharoah")?.appendChild(pharoahFollow)
+          if (document.getElementById("gunther-image-follow")) {
+            const pharoah: HTMLImageElement = document.getElementById("pharoah-image-follow") as HTMLImageElement
+            const pharoahCss: CSSStyleDeclaration = getComputedStyle(pharoah)
+            const pharoahMarginLeft: string = pharoahCss.marginLeft
+            const pharoahRemovePx: number = Number(pharoahMarginLeft.match(regex)?.join(''))
+            const pharoahNewMarg: number = pharoahRemovePx - getSpudMargin;
+            pharoah.style.marginLeft = pharoahNewMarg.toString() + "px"
+          }
         })
       }}>translate?</button>
       <button className="close-button" id="retrieve-pharoah-close-button" onClick={() => {

@@ -1,12 +1,14 @@
 type PropsType = {
-    setShowGetGTerminal: React.Dispatch<React.SetStateAction<boolean>>
+    setShowGetGTerminal: React.Dispatch<React.SetStateAction<boolean>>,
+    regex: RegExp,
+    getSpudMargin: number
   }
   
-  const RetrieveGuntherWindow = ({ setShowGetGTerminal }: PropsType) => {
+  const RetrieveGuntherWindow = ({ setShowGetGTerminal, regex, getSpudMargin }: PropsType) => {
 
     return(
       <>
-      <img className="cat-images" id="gunther-image" src="./src/images/two.png" alt="gunther"></img>
+      <img className="cat-images" id="gunther-image" src="./src/images/gunther1.png" alt="gunther"></img>
       <p className="terminal-window-explanation" id="retrieve-gunther-explanation">meow meeow mow</p>
       <button className="terminal-window-button" id="retrieve-gunther-button" onClick={() => {
         (document.getElementById("retrieve-gunther-explanation") as HTMLElement).innerHTML = "i'm huuuuuungry";
@@ -20,9 +22,17 @@ type PropsType = {
           const guntherFollow = document.createElement('img');
           guntherFollow.id = "gunther-image-follow";
           guntherFollow.className = "cat-images";
-          (guntherFollow as HTMLImageElement).src = "./src/images/two.png";
+          (guntherFollow as HTMLImageElement).src = "./src/images/gunther1.png";
           (guntherFollow as HTMLImageElement).alt = "gunther";
-          document.getElementById("retrieve-gunther")?.appendChild(guntherFollow)
+          document.getElementById("retrieve-gunther")?.appendChild(guntherFollow);
+          if (document.getElementById("pharoah-image-follow")) {
+            const pharoah: HTMLImageElement = document.getElementById("pharoah-image-follow") as HTMLImageElement
+            const pharoahCss: CSSStyleDeclaration = getComputedStyle(pharoah)
+            const pharoahMarginLeft: string = pharoahCss.marginLeft
+            const pharoahRemovePx: number = Number(pharoahMarginLeft.match(regex)?.join(''))
+            const pharoahNewMarg: number = pharoahRemovePx + getSpudMargin;
+            pharoah.style.marginLeft = pharoahNewMarg.toString() + "px"
+          }
         })
       }}>translate?</button>
       <button className="close-button" id="retrieve-gunther-close-button" onClick={() => {

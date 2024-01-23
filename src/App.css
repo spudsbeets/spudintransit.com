@@ -36,6 +36,18 @@
   100% { opacity: 1 }
 }
 
+@keyframes fadeinfadeout {
+  0% { opacity: 0 }
+  20% { opacity: 1 }
+  80% { opacity: 1 }
+  100% { opacity: 0 }
+}
+
+@keyframes fadeout {
+  from { opacity: 1 }
+  to { opacity: 0 }
+}
+
 @keyframes tuemove {
   0% { margin-top: 0px }
   22% { margin-top: 80px }
@@ -148,6 +160,49 @@
   60% { margin-top: -20px; margin-left: 20px }
   77% { margin-top: 0px; margin-left: 65px }
   100% { margin-top: 40px; margin-left: 0px }
+}
+
+@keyframes blinkyHallway1 {
+  0% { background-color: #b59f84 }
+  1% { background-color: #000000 }
+  96% { background-color: #b59f84 }
+  97% { background-color: #000000 }
+  100% { background-color: #b59f84 }
+}
+
+@keyframes blinkyHallway2 {
+  0% { background-color: #b59f84 }
+  1% { background-color: #000000 }
+  60% { background-color: #b59f84 }
+  61% { background-color: #000000 }
+  88% { background-color: #b59f84 }
+  90% { background-color: #000000 }
+  100% { background-color: #b59f84 }
+}
+
+@keyframes feedGunther {
+  from { margin-top: 10px; margin-left: -180px }
+  to { margin-top: 180px; margin-left: -110px }
+}
+
+@keyframes foodGunther {
+  from { margin-top: 0px; margin-left: 0px }
+  to { margin-top: -55px; margin-left: -140px }
+}
+
+@keyframes feedPharoah {
+  0% { margin-top: 15px; margin-left: -180px }
+  10% { margin-top: 245px; margin-left: 212px }
+  26% { margin-top: -194px; margin-left: 371px }
+  37% { margin-top: 15px; margin-left: -162px }
+  55% { margin-top: 22px; margin-left: -77px }
+  78% { margin-top: -50px; margin-left: 99px }
+  100% { margin-top: -150px; margin-left: -100px }
+}
+
+@keyframes foodPharoah {
+  from { margin-top: 0px; margin-left: 0px }
+  to { margin-top: 45px; margin-left: -280px }
 }
 
 * {
@@ -318,6 +373,31 @@ body, html {
     flex-wrap: nowrap
 }
 
+#arrow-instructions {
+   width: 250px;
+   height: 100px;
+   position: fixed;
+   right: 0;
+   margin-right: 200px;
+   bottom: 0;
+   margin-bottom: 20px;
+   z-index: 7;
+   text-align: center;
+   background-color: #33cc33;
+   font-family: 'Silkscreen', serif;
+   margin-left: 400px;
+   margin-top: 70px;
+   border: 8px ridge #057405;
+   opacity: 0;
+   animation: fadeinfadeout 10s 1
+}
+
+#arrow-explanation {
+  text-align: center;
+  background-color: #33cc33;
+  font-family: 'Silkscreen', serif;
+}
+
 #spud {
     width: 160px;
     height: 160px;
@@ -396,6 +476,10 @@ body, html {
   margin-left: 10px;
   height: 50px;
   width: 50px;
+}
+
+.direction-button:hover {
+  cursor: pointer
 }
 
 #up-arrow {
@@ -523,6 +607,7 @@ body, html {
   background-color: #b59f84;
   font-family: 'Silkscreen', serif;
   font-size: .4em;
+  z-index: 10;
 }
 
 .close-button:hover {
@@ -535,7 +620,8 @@ body, html {
   height: 100px;
   margin-top: 40px;
   mix-blend-mode: multiply;
-  background-color: white
+  background-color: white;
+  opacity: 1
 }
 
 #gunther-image-follow {
@@ -552,6 +638,18 @@ body, html {
   animation-fill-mode: forwards
 }
 
+#gunther-image-feed {
+  z-index: 5;
+  width: 160px;
+  height: 160px;
+  mix-blend-mode: multiply;
+  background-color: white;
+  position: absolute;
+  margin-left: -180px;
+  margin-top: 10px;
+  opacity: 1
+}
+
 #pharoah-image-follow {
   z-index: 5;
   width: 160px;
@@ -564,6 +662,18 @@ body, html {
   opacity: 0;
   animation: fadein4 1.5s ease-out .5s, wiggleGunther 2.5s ease-in-out 2s;
   animation-fill-mode: forwards
+}
+
+#pharoah-image-feed {
+  z-index: 5;
+  width: 160px;
+  height: 160px;
+  mix-blend-mode: multiply;
+  background-color: white;
+  position: absolute;
+  opacity: 1;
+  margin-left: -180px;
+  margin-top: 15px;
 }
 
 #spuds-snips-tuesday-component, #tuesday-snips-header, #spuds-snips-tuesday-button-area, #spuds-snips-tuesday-name-area, #spuds-songs-component, #spuds-stuff-component, #song-arrows-div, #stuff-arrows-div, .song-page, #songs-content, #stuff-content, .release-divs, .release-title, #props-links, #craig-props-div, #spencer-props-div, #spuds-snips-wednesday-component, #wednesday-snips-header, #spuds-snips-wednesday-button-area, #spuds-snips-wednesday-name-area, #various-stuff, .stuff-page {
@@ -604,11 +714,11 @@ body, html {
   justify-content: space-between
 }
 
-#tuesday-snips-header, #spuds-snips-tuesday-name-area, .tuesday-buttons, #wednesday-snips-header, #spuds-snips-wednesday-name-area, .wednesday-buttons, .stuff-div, .stuff-page-link-title, #resume-img-link, #bio, #email {
+#tuesday-snips-header, #spuds-snips-tuesday-name-area, .tuesday-buttons, #wednesday-snips-header, #spuds-snips-wednesday-name-area, .wednesday-buttons, .stuff-div, .stuff-page-link-title, #resume-img-link, #bio, #email, .thank-you-messages {
   font-family: 'Silkscreen', serif;
 }
 
-#tuesday-snips-header, #spuds-snips-tuesday-name-area, #wednesday-snips-header, #spuds-snips-wednesday-name-area, .stuff-header, .stuff-page-link-title {
+#tuesday-snips-header, #spuds-snips-tuesday-name-area, #wednesday-snips-header, #spuds-snips-wednesday-name-area, .stuff-header, .stuff-page-link-title, .thank-you-messages {
   text-align: center;
 }
 
@@ -1023,4 +1133,37 @@ body, html {
 
 #email {
   margin-top: 100px;
+}
+
+.thank-you-messages {
+  position: absolute;
+  font-size: 3em;
+  margin-top: 0px;
+  margin-left: 0px;
+  opacity: 0;
+  animation: fadein4 2s ease-out 5.5s 1;
+  z-index: 10;
+  background-color: #33cc33;
+}
+
+.taunt-divs {
+  position: absolute;
+  margin-top: -140px;
+  margin-left: -220px;
+  width: 400px;
+  background-color: #33cc33;
+  animation: fadeinfadeout 4s ease-out 1;
+  border: 8px ridge #057405;
+  opacity: 0;
+}
+
+.taunt-messages {
+  background-color: #33cc33;
+  font-family: 'Silkscreen', serif;
+  padding: 10px;
+  text-align: center;
+}
+
+#taunt-div-pharoah {
+  margin-top: 250px;
 }
