@@ -13,6 +13,7 @@ const StuffPageThree = () => {
                 feel free to reach out to me at the email below if you'd like! cheers!
                 </p>
                 <p id="email">email: millersean757@gmail.com</p>
+                <a id="instagram-link" target="_blank" href="https://www.instagram.com/sean.miller/"><p id="instagram">instagram: sean.miller</p></a>
             </div>
         </div>
     )

@@ -7,6 +7,7 @@ const SongPageTwo = () => {
                 <a href="https://music.apple.com/us/artist/spud-in-transit/1616735609" target="_blank" className="links-anchors"><img src="./src/images/applemusic.png" alt="applemusic" id="applemusic-image" className="link-images"></img></a>
                 <a href="https://soundcloud.com/user-552145508" target="_blank" className="links-anchors"><img src="./src/images/soundcloud.png" alt="soundcloud" id="soundcloud-image" className="link-images"></img></a>
                 <a href="https://spudintransit.bandcamp.com/album/c-flower-mountain" target="_blank" className="links-anchors"><img src="./src/images/bandcamp.png" alt="bandcamp" id="bandcamp-image" className="link-images"></img></a>
+                <a href="https://www.youtube.com/channel/UC6FwIaEdVzAiMSvd944oIdg" target="_blank" className="links-anchors"><img src="./src/images/youtube.png" alt="youtube" id="youtube-image" className="link-images"></img></a>
             </div>
         </div>
     )

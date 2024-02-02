@@ -36,7 +36,7 @@ const SpudsSnipsTuesday = () => {
   }
 
   function returnTopMargs(): {margin: string, animation: string}[] {
-    if (getWindowWidth() > 1000) {
+    if (getWindowWidth() > 1350) {
       return [
         {
         margin: "0px",
@@ -76,6 +76,49 @@ const SpudsSnipsTuesday = () => {
         },
         {
         margin: "320px",
+        animation: "tuemove10"
+        } 
+      ]
+    } else if (getWindowWidth() <= 1350) {
+      return [
+        {
+        margin: "0px",
+        animation: "tuemove1"
+        }, 
+        {
+        margin: "36px",
+        animation: "tuemove2"
+        },
+        {
+        margin: "70px",
+        animation: "tuemove3"
+        },
+        {
+        margin: "83px",
+        animation: "tuemove4"  
+        },
+        {
+        margin: "127px",
+        animation: "tuemove5"
+        },
+        {
+        margin: "168px",
+        animation: "tuemove6"
+        },
+        {
+        margin: "195px",
+        animation: "tuemove7"
+        },
+        {
+        margin: "223px",
+        animation: "tuemove8"
+        },
+        {
+        margin: "201px",
+        animation: "tuemove9"
+        },
+        {
+        margin: "230px",
         animation: "tuemove10"
         } 
       ]

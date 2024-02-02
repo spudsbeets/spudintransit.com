@@ -43,19 +43,90 @@ const FunPath = () => {
   const leftHallwayDivs: HTMLCollectionOf<Element> = document.getElementsByClassName("offshoot-tile-left")
 
   function getWindowWidth(): number {
+    console.log(window.innerWidth)
     return window.innerWidth
   }
 
   function getSpudMargin(): number {
-    if (getWindowWidth() > 1000) {
+    if (getWindowWidth() >= 1000) {
       return 204
+    } else if (getWindowWidth() < 1000 && getWindowWidth() >= 700) {
+      return 164
+    } else {
+      throw new Error("whaat")
+    }
+  }
+
+  function getClosenessMarg(): number {
+    if (getWindowWidth() >= 1000) {
+      return 65
+    } else if (getWindowWidth() < 1000 && getWindowWidth() >= 700) {
+      return 45
     } else {
       throw new Error("whaat")
     }
   }
 
   function getDefaultMargs(): MarginObject {
-    if (getWindowWidth() > 1000) {
+    if (getWindowWidth() < 1000 && getWindowWidth() >= 700) {
+      return {
+        defaultMarginLeft: "16px",
+        leftOffshootMargins: [
+         {
+          marginTop: "-1790px",
+          marginLeft: "-804px",
+          correlatedTerminal: "cocktail-clash"
+         },
+         {
+          marginTop: "-2446px",
+          marginLeft: "-476px",
+          correlatedTerminal: "retrieve-gunther"
+         },
+         {
+          marginTop: "-3266px",
+          marginLeft: "-968px",
+          correlatedTerminal: "spuds-snips-wednesday"
+         },
+         {
+          marginTop: "-3922px",
+          marginLeft: "-968px",
+          correlatedTerminal: "spuds-songs"
+         },
+         {
+          marginTop: "-4906px",
+          marginLeft: "-640px",
+          correlatedTerminal: "spuds-ship"
+         },
+        ],
+        rightOffshootMargins: [
+         {
+           marginTop: "-2282px",
+           marginLeft: "1000px",
+           correlatedTerminal: "retrieve-pharoah"
+         },
+         {
+           marginTop: "-2774px",
+           marginLeft: "508px",
+           correlatedTerminal: "spuds-stuff"
+         },
+         {
+           marginTop: "-3594px",
+           marginLeft: "672px",
+           correlatedTerminal: "spuds-snips-tuesday"
+         },
+         {
+           marginTop: "-4414px",
+           marginLeft: "508px",
+           correlatedTerminal: "feed-pharoah"
+         },
+         {
+           marginTop: "-5234px",
+           marginLeft: "836px",
+           correlatedTerminal: "feed-gunther"
+         },
+        ]
+      }
+    } else if (getWindowWidth() >= 1000) {
       return {
         defaultMarginLeft: "20px",
         leftOffshootMargins: [
@@ -285,7 +356,7 @@ const FunPath = () => {
         const spudCss: CSSStyleDeclaration = getComputedStyle(spud)
         const bottomTile: HTMLDivElement = document.getElementById("bottom-tile") as HTMLDivElement
         let count = 0
-        if (spud.getBoundingClientRect().top - mainHallwayDivs[i].getBoundingClientRect().bottom < 40 && spud.getBoundingClientRect().top - mainHallwayDivs[i].getBoundingClientRect().bottom > 0 && spudCss.marginLeft === getDefaultMargs().defaultMarginLeft) {
+        if (spud.getBoundingClientRect().top - mainHallwayDivs[i].getBoundingClientRect().bottom < getClosenessMarg() && spud.getBoundingClientRect().top - mainHallwayDivs[i].getBoundingClientRect().bottom > 0 && spudCss.marginLeft === getDefaultMargs().defaultMarginLeft) {
           count += 1
           if ((document.getElementById("gunther-image-follow") && !document.getElementById("pharoah-image-follow")) ||
           document.getElementById("pharoah-image-follow") && !document.getElementById("gunther-image-follow")) {
@@ -309,8 +380,8 @@ const FunPath = () => {
             getDefaultMargs().leftOffshootMargins[3].marginTop === spudCss.marginTop ||
             getDefaultMargs().leftOffshootMargins[4].marginTop === spudCss.marginTop) &&
             getDefaultMargs().defaultMarginLeft === spudCss.marginLeft) &&
-            ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 40 &&
-            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -40)) {
+            ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg() &&
+            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -(getClosenessMarg()))) {
               const catMarginLeft: string = catCss.marginLeft 
               const catRemovePx: number = Number(catMarginLeft.match(regex)?.join(''))
               const catNewMarg: number = catRemovePx + getSpudMargin();
@@ -330,8 +401,8 @@ const FunPath = () => {
             getDefaultMargs().rightOffshootMargins[3].marginTop === spudCss.marginTop ||
             getDefaultMargs().rightOffshootMargins[4].marginTop === spudCss.marginTop) &&
             getDefaultMargs().defaultMarginLeft === spudCss.marginLeft) &&
-            ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 40 &&
-            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -40)) {
+            ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg() &&
+            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -(getClosenessMarg()))) {
               const catMarginLeft: string = catCss.marginLeft 
               const catRemovePx: number = Number(catMarginLeft.match(regex)?.join(''))
               const catNewMarg: number = catRemovePx - getSpudMargin();
@@ -345,8 +416,8 @@ const FunPath = () => {
               }
               (guntherOrPharoah()[0] as HTMLImageElement).style.marginLeft = catNewMarg.toString() + "px"
               catCount -= 1              
-            } else if (spud.getBoundingClientRect().bottom - bottomTile.getBoundingClientRect().bottom < 40 &&
-            spud.getBoundingClientRect().bottom - bottomTile.getBoundingClientRect().bottom > -40) {
+            } else if (spud.getBoundingClientRect().bottom - bottomTile.getBoundingClientRect().bottom < getClosenessMarg() &&
+            spud.getBoundingClientRect().bottom - bottomTile.getBoundingClientRect().bottom > -(getClosenessMarg())) {
               const catMarginTop: string = catCss.marginTop
               const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
               const catNewMarg: number = catRemovePx + getSpudMargin();
@@ -360,8 +431,8 @@ const FunPath = () => {
               }
               (guntherOrPharoah()[0] as HTMLImageElement).style.marginTop = catNewMarg.toString() + "px"
               catCount -= 1
-            } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < 70 &&
-            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -70) {
+            } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < getClosenessMarg() &&
+            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -(getClosenessMarg())) {
               const catMarginTop: string = catCss.marginTop
               const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
               const catNewMarg: number = catRemovePx + getSpudMargin();
@@ -369,10 +440,10 @@ const FunPath = () => {
                 const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                 const cat2MarginTop: string = cat2Css.marginTop
                 const cat2MarginLeft: string = cat2Css.marginLeft
-                if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top < 70 &&
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top > -70) {
-                  if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < 70 &&
-                  (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -70) {
+                if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top < getClosenessMarg() &&
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top > -(getClosenessMarg())) {
+                  if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < getClosenessMarg() &&
+                  (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -(getClosenessMarg())) {
                     const cat2RemovePxTop: number = Number(cat2MarginTop.match(regex)?.join(''))
                     const cat2NewMargTop: number = cat2RemovePxTop + (getSpudMargin() * 2)
                     const cat2RemovePxLeft: number = Number(cat2MarginLeft.match(regex)?.join(''))
@@ -411,10 +482,10 @@ const FunPath = () => {
                 spudCss.marginTop !== getDefaultMargs().leftOffshootMargins[2].marginTop &&
                 spudCss.marginTop !== getDefaultMargs().leftOffshootMargins[3].marginTop &&
                 spudCss.marginTop !== getDefaultMargs().leftOffshootMargins[4].marginTop) && 
-                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > 70 ||
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -70)) {
-                  if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right < 70 &&
-                  (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right > -70) {
+                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > getClosenessMarg() ||
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -(getClosenessMarg()))) {
+                  if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right < getClosenessMarg() &&
+                  (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right > -(getClosenessMarg())) {
                     const cat2RemovePx: number = Number(cat2MarginLeft.match(regex)?.join(''))
                     const cat2NewMarg: number = cat2RemovePx - getSpudMargin();
                     (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
@@ -430,14 +501,14 @@ const FunPath = () => {
                 spudCss.marginTop !== getDefaultMargs().rightOffshootMargins[2].marginTop &&
                 spudCss.marginTop !== getDefaultMargs().rightOffshootMargins[3].marginTop &&
                 spudCss.marginTop !== getDefaultMargs().rightOffshootMargins[4].marginTop) && 
-                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > 70 ||
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -70)) {
+                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > getClosenessMarg() ||
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -(getClosenessMarg()))) {
                   const cat2RemovePx: number = Number(cat2MarginLeft.match(regex)?.join(''))
                   const cat2NewMarg: number = cat2RemovePx - getSpudMargin();
                   (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
                   bothCount -= 1
-                } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < 70 &&
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -70) {
+                } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < getClosenessMarg() &&
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -(getClosenessMarg())) {
                   const cat2RemovePx: number = Number(cat2MarginTop.match(regex)?.join(''))
                   const cat2NewMarg: number = cat2RemovePx + (getSpudMargin() * 2);
                   (guntherOrPharoah()[1] as HTMLImageElement).style.marginTop = cat2NewMarg.toString() + "px"
@@ -454,6 +525,7 @@ const FunPath = () => {
             }
           }
           spud.style.marginTop = newMarg.toString() + "px"  
+          console.log(spudCss.marginTop)
           count -= 1
           break
          }
@@ -467,7 +539,7 @@ const FunPath = () => {
         const spudCss: CSSStyleDeclaration = getComputedStyle(spud)
         const topTile: HTMLDivElement = document.getElementById("top-tile") as HTMLDivElement
         let count = 0
-        if (spud.getBoundingClientRect().bottom - mainHallwayDivs[i].getBoundingClientRect().top > -40 && spud.getBoundingClientRect().bottom - mainHallwayDivs[i].getBoundingClientRect().top < 0 && spudCss.marginLeft === getDefaultMargs().defaultMarginLeft) {
+        if (spud.getBoundingClientRect().bottom - mainHallwayDivs[i].getBoundingClientRect().top > -(getClosenessMarg()) && spud.getBoundingClientRect().bottom - mainHallwayDivs[i].getBoundingClientRect().top < 0 && spudCss.marginLeft === getDefaultMargs().defaultMarginLeft) {
           count += 1
           if (document.getElementById("gunther-image-follow") && !document.getElementById("pharoah-image-follow") ||
           document.getElementById("pharoah-image-follow") && !document.getElementById("gunther-image-follow")) {
@@ -491,8 +563,8 @@ const FunPath = () => {
             getDefaultMargs().leftOffshootMargins[3].marginTop === spudCss.marginTop ||
             getDefaultMargs().leftOffshootMargins[4].marginTop === spudCss.marginTop) &&
             getDefaultMargs().defaultMarginLeft === spudCss.marginLeft) &&
-            ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 40 &&
-            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -40)) {
+            ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg() &&
+            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -(getClosenessMarg()))) {
               const catMarginLeft: string = catCss.marginLeft 
               const catRemovePx: number = Number(catMarginLeft.match(regex)?.join(''))
               const catNewMarg: number = catRemovePx + getSpudMargin();
@@ -512,8 +584,8 @@ const FunPath = () => {
             getDefaultMargs().rightOffshootMargins[3].marginTop === spudCss.marginTop ||
             getDefaultMargs().rightOffshootMargins[4].marginTop === spudCss.marginTop) &&
             getDefaultMargs().defaultMarginLeft === spudCss.marginLeft) &&
-            ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 40 &&
-            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -40)) {
+            ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg() &&
+            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -(getClosenessMarg()))) {
               const catMarginLeft: string = catCss.marginLeft 
               const catRemovePx: number = Number(catMarginLeft.match(regex)?.join(''))
               const catNewMarg: number = catRemovePx - getSpudMargin();
@@ -527,8 +599,8 @@ const FunPath = () => {
               }
               (guntherOrPharoah()[0] as HTMLImageElement).style.marginLeft = catNewMarg.toString() + "px"
               catCount -= 1              
-            } else if (spud.getBoundingClientRect().top - topTile.getBoundingClientRect().top < 40 &&
-            spud.getBoundingClientRect().bottom - topTile.getBoundingClientRect().top > -40) {
+            } else if (spud.getBoundingClientRect().top - topTile.getBoundingClientRect().top < getClosenessMarg() &&
+            spud.getBoundingClientRect().bottom - topTile.getBoundingClientRect().top > -(getClosenessMarg())) {
               const catMarginTop: string = catCss.marginTop
               const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
               const catNewMarg: number = catRemovePx - getSpudMargin();
@@ -542,8 +614,8 @@ const FunPath = () => {
               }
               (guntherOrPharoah()[0] as HTMLImageElement).style.marginTop = catNewMarg.toString() + "px"
               catCount -= 1
-            } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < 40 &&
-            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -40) {
+            } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < getClosenessMarg() &&
+            (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -(getClosenessMarg())) {
               const catMarginTop: string = catCss.marginTop
               const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
               const catNewMarg: number = catRemovePx - getSpudMargin();
@@ -551,10 +623,10 @@ const FunPath = () => {
                 const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                 const cat2MarginTop: string = cat2Css.marginTop
                 const cat2MarginLeft: string = cat2Css.marginLeft
-                if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top < 70 &&
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top > -70) {
-                  if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < 70 &&
-                  (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -70) {
+                if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top < getClosenessMarg() &&
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top > -(getClosenessMarg())) {
+                  if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < getClosenessMarg() &&
+                  (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -(getClosenessMarg())) {
                       const cat2RemovePxTop: number = Number(cat2MarginTop.match(regex)?.join(''))
                       const cat2NewMargTop: number = cat2RemovePxTop - (getSpudMargin() * 2)
                       const cat2RemovePxLeft: number = Number(cat2MarginLeft.match(regex)?.join(''))
@@ -593,12 +665,12 @@ const FunPath = () => {
                 spudCss.marginTop !== getDefaultMargs().leftOffshootMargins[2].marginTop &&
                 spudCss.marginTop !== getDefaultMargs().leftOffshootMargins[3].marginTop &&
                 spudCss.marginTop !== getDefaultMargs().leftOffshootMargins[4].marginTop) && 
-                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > 70 ||
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -70)) {
-                  if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right < 70 &&
-                  (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right > -70) {
-                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -70) {
+                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > getClosenessMarg() ||
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -(getClosenessMarg()))) {
+                  if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right < getClosenessMarg() &&
+                  (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right > -(getClosenessMarg())) {
+                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -(getClosenessMarg())) {
                       const cat2RemovePxTop: number = Number(cat2MarginTop.match(regex)?.join(''))
                       const cat2RemovePxLeft: number = Number(cat2MarginLeft.match(regex)?.join(''))
                       const cat2NewMargTop: number = cat2RemovePxTop - getSpudMargin()
@@ -623,14 +695,14 @@ const FunPath = () => {
                 spudCss.marginTop !== getDefaultMargs().rightOffshootMargins[2].marginTop &&
                 spudCss.marginTop !== getDefaultMargs().rightOffshootMargins[3].marginTop &&
                 spudCss.marginTop !== getDefaultMargs().rightOffshootMargins[4].marginTop) && 
-                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > 70 ||
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -70)) {
+                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > getClosenessMarg() ||
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -(getClosenessMarg()))) {
                   const cat2RemovePx: number = Number(cat2MarginLeft.match(regex)?.join(''))
                   const cat2NewMarg: number = cat2RemovePx - getSpudMargin();
                   (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
                   bothCount -= 1
-                } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < 70 &&
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -70) {
+                } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < getClosenessMarg() &&
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -(getClosenessMarg())) {
                   const cat2RemovePx: number = Number(cat2MarginTop.match(regex)?.join(''))
                   const cat2NewMarg: number = cat2RemovePx - (getSpudMargin() * 2);
                   (guntherOrPharoah()[1] as HTMLImageElement).style.marginTop = cat2NewMarg.toString() + "px"
@@ -666,9 +738,9 @@ const FunPath = () => {
         for (let i = 0; i < offshootLeftDivs.length; i++) {
           const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
           const spudCss: CSSStyleDeclaration = getComputedStyle(spud)        
-          if (spud.getBoundingClientRect().left - offshootLeftDivs[i].getBoundingClientRect().right < 40 
+          if (spud.getBoundingClientRect().left - offshootLeftDivs[i].getBoundingClientRect().right < getClosenessMarg() 
           && spud.getBoundingClientRect().left - offshootLeftDivs[i].getBoundingClientRect().right > 0 
-          && spud.getBoundingClientRect().top - offshootLeftDivs[i].getBoundingClientRect().top < 40 
+          && spud.getBoundingClientRect().top - offshootLeftDivs[i].getBoundingClientRect().top < getClosenessMarg() 
           && spud.getBoundingClientRect().top - offshootLeftDivs[i].getBoundingClientRect().top > 0
           ) {
           leftCount += 1
@@ -681,7 +753,6 @@ const FunPath = () => {
             bothCount += 1
           }
               if (leftCount === 1) {
-                  console.log('move-1-left')
                   const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
                   const spudCss: CSSStyleDeclaration = getComputedStyle(spud)
                   const marginLeft: string = spudCss.marginLeft
@@ -691,8 +762,8 @@ const FunPath = () => {
                     const catCss: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[0] as HTMLImageElement)
                     const catMarginTop: string = catCss.marginTop 
                     const catMarginLeft: string = catCss.marginLeft
-                    if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < 70 &&
-                    (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -70) {
+                    if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < getClosenessMarg() &&
+                    (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -(getClosenessMarg())) {
                       const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
                       const catNewMarg: number = catRemovePx + getSpudMargin();
                       if (bothCount === 1) {
@@ -703,8 +774,8 @@ const FunPath = () => {
                         (guntherOrPharoah()[1] as HTMLImageElement).style.marginTop = cat2NewMarg.toString() + "px"
                       }
                       (guntherOrPharoah()[0] as HTMLImageElement).style.marginTop = catNewMarg.toString() + "px"          
-                    } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < 70 &&
-                    (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -70) {
+                    } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < getClosenessMarg() &&
+                    (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -(getClosenessMarg())) {
                       const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
                       const catNewMarg: number = catRemovePx - getSpudMargin();
                       if (bothCount === 1) {
@@ -715,8 +786,8 @@ const FunPath = () => {
                         (guntherOrPharoah()[1] as HTMLImageElement).style.marginTop = cat2NewMarg.toString() + "px"
                       }
                       (guntherOrPharoah()[0] as HTMLImageElement).style.marginTop = catNewMarg.toString() + "px" 
-                    } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 70 &&
-                    (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -70) {
+                    } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg() &&
+                    (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -(getClosenessMarg())) {
                       const catRemovePx: number = Number(catMarginLeft.match(regex)?.join(''))
                       const catNewMarg: number = catRemovePx + getSpudMargin();
                       if (bothCount === 1) {
@@ -757,7 +828,6 @@ const FunPath = () => {
               bothCount += 1
             } 
             if (leftCount === 1) {
-              console.log('move-2-left')
               const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
               const spudCss: CSSStyleDeclaration = getComputedStyle(spud)
               const marginLeft: string = spudCss.marginLeft
@@ -768,16 +838,16 @@ const FunPath = () => {
                 const catMarginTop: string = catCss.marginTop   
                 const catMarginLeft: string = catCss.marginLeft
                 if (spudCss.marginLeft === getDefaultMargs().defaultMarginLeft &&
-                ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < 70 &&
-                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -70)) {
+                ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < getClosenessMarg() &&
+                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -(getClosenessMarg()))) {
                   const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
                   const catNewMarg: number = catRemovePx - getSpudMargin();
                   if (bothCount === 1) {
                     const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                     const cat2MarginTop: string = cat2Css.marginTop
                     const cat2MarginLeft: string = cat2Css.marginLeft
-                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > 70 ||
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -70) {
+                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left > getClosenessMarg() ||
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().left < -(getClosenessMarg())) {
                       const cat2RemovePx: number = Number(cat2MarginLeft.match(regex)?.join(''))
                       const cat2NewMarg: number = cat2RemovePx - getSpudMargin();
                       (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
@@ -789,16 +859,16 @@ const FunPath = () => {
                   }
                   (guntherOrPharoah()[0] as HTMLImageElement).style.marginTop = catNewMarg.toString() + "px" 
                 } else if (spudCss.marginLeft === getDefaultMargs().defaultMarginLeft &&
-                ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < 70 &&
-                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -70)) {
+                ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < getClosenessMarg() &&
+                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -(getClosenessMarg()))) {
                   const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
                   const catNewMarg: number = catRemovePx + getSpudMargin();
                   if (bothCount === 1) {
                     const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                     const cat2MarginTop: string = cat2Css.marginTop
                     const cat2MarginLeft: string = cat2Css.marginLeft
-                    if (!((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -70)) {
+                    if (!((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -(getClosenessMarg()))) {
                       const cat2RemovePx: number = Number(cat2MarginLeft.match(regex)?.join(''))
                       const cat2NewMarg: number = cat2RemovePx - getSpudMargin();
                       (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
@@ -809,13 +879,13 @@ const FunPath = () => {
                     }
                   }
                   (guntherOrPharoah()[0] as HTMLImageElement).style.marginTop = catNewMarg.toString() + "px" 
-                } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left < 70 &&
-                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left > -70) {
+                } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left < getClosenessMarg() &&
+                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left > -(getClosenessMarg())) {
                   const catRemovePx: number = Number(catMarginLeft.match(regex)?.join(''))
                   const catNewMarg: number = catRemovePx + getSpudMargin();
                   if (bothCount === 1) {
-                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -70) {
+                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -(getClosenessMarg())) {
                       const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                       const cat2MarginLeft: string = cat2Css.marginLeft
                       const cat2MarginTop: string = cat2Css.marginTop
@@ -841,18 +911,18 @@ const FunPath = () => {
                     const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                     const cat2MarginTop: string = cat2Css.marginTop
                     const cat2MarginLeft: string = cat2Css.marginLeft
-                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom > -70) {
+                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom > -(getClosenessMarg())) {
                       const cat2RemovePx: number = Number(cat2MarginTop.match(regex)?.join(''))
                       const cat2NewMarg: number = cat2RemovePx - getSpudMargin();
                       (guntherOrPharoah()[1] as HTMLImageElement).style.marginTop = cat2NewMarg.toString() + "px"
-                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top > -70) {
+                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top > -(getClosenessMarg())) {
                       const cat2RemovePx: number = Number(cat2MarginTop.match(regex)?.join(''))
                       const cat2NewMarg: number = cat2RemovePx + getSpudMargin();
                       (guntherOrPharoah()[1] as HTMLImageElement).style.marginTop = cat2NewMarg.toString() + "px"
-                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right > -70) {
+                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right > -(getClosenessMarg())) {
                       const cat2RemovePx: number = Number(cat2MarginLeft.match(regex)?.join(''))
                       const cat2NewMarg: number = cat2RemovePx - getSpudMargin();
                       (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
@@ -885,7 +955,6 @@ const FunPath = () => {
               bothCount += 1
             }
             if (leftCount === 1) {
-              console.log('move-3-left')
               const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
               const spudCss: CSSStyleDeclaration = getComputedStyle(spud)
               const marginLeft: string = spudCss.marginLeft
@@ -907,17 +976,17 @@ const FunPath = () => {
                 spudCss.marginLeft === getDefaultMargs().rightOffshootMargins[4].marginLeft) {
                   const catNewMarg: number = catRemovePx + getSpudMargin();
                   (guntherOrPharoah()[0] as HTMLImageElement).style.marginLeft = catNewMarg.toString() + "px" 
-                } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left < 70 &&
-                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left > -70) {
+                } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left < getClosenessMarg() &&
+                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left > -(getClosenessMarg())) {
                   const catNewMarg: number = catRemovePx + getSpudMargin();
                   if (bothCount === 1) {
                     const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                     const cat2MarginLeft: string = cat2Css.marginLeft
                     const cat2MarginTop: string = cat2Css.marginTop
-                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > 70 ||
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < -70) {
-                      if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom < 70 &&
-                      (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom > -70) {
+                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > getClosenessMarg() ||
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < -(getClosenessMarg())) {
+                      if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom < getClosenessMarg() &&
+                      (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom > -(getClosenessMarg())) {
                         const cat2RemovePxLeft: number = Number(cat2MarginLeft.match(regex)?.join(''))
                         const cat2RemovePxTop: number = Number(cat2MarginTop.match(regex)?.join(''))
                         const cat2NewMargLeft: number = cat2RemovePxLeft + (getSpudMargin() * 3)
@@ -960,10 +1029,10 @@ const FunPath = () => {
                 spudCss.marginLeft === getDefaultMargs().rightOffshootMargins[4].marginLeft) {
                   const cat2NewMarg = cat2RemovePx + 0;
                   (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
-                } else if (((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left < 70 &&
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left > -70) &&
-                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 70 &&
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -70)) {
+                } else if (((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left < getClosenessMarg() &&
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - spud.getBoundingClientRect().left > -(getClosenessMarg())) &&
+                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg() &&
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -(getClosenessMarg()))) {
                   const cat2NewMarg = cat2RemovePx + (getSpudMargin() * 2);
                   (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
                 } else {
@@ -989,14 +1058,13 @@ const FunPath = () => {
       })
       for (let i = 0; i < offshootRightDivs.length; i++) {
           const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
-          if (spud.getBoundingClientRect().left - offshootRightDivs[i].getBoundingClientRect().right > -40 
+          if (spud.getBoundingClientRect().left - offshootRightDivs[i].getBoundingClientRect().right > -(getClosenessMarg()) 
           && spud.getBoundingClientRect().left - offshootRightDivs[i].getBoundingClientRect().right < 0 
-          && spud.getBoundingClientRect().top - offshootRightDivs[i].getBoundingClientRect().top < 40 
+          && spud.getBoundingClientRect().top - offshootRightDivs[i].getBoundingClientRect().top < getClosenessMarg() 
           && spud.getBoundingClientRect().top - offshootRightDivs[i].getBoundingClientRect().top > 0
           ) {
           leftCount += 1
               if (leftCount === 1) {
-                console.log('move-1')
                   const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
                   const spudCss: CSSStyleDeclaration = getComputedStyle(spud)
                   const marginLeft: string = spudCss.marginLeft
@@ -1026,7 +1094,6 @@ const FunPath = () => {
               bothCount += 1
             }           
             if (leftCount === 1) {
-              console.log('move-2')
               const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
               const spudCss: CSSStyleDeclaration = getComputedStyle(spud)
               const marginLeft: string = spudCss.marginLeft
@@ -1037,8 +1104,8 @@ const FunPath = () => {
                 const catMarginTop: string = catCss.marginTop   
                 const catMarginLeft: string = catCss.marginLeft
                 if (spudCss.marginLeft === getDefaultMargs().defaultMarginLeft &&
-                ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < 70 &&
-                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -70)) {
+                ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < getClosenessMarg() &&
+                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -(getClosenessMarg()))) {
                   const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
                   const catNewMarg: number = catRemovePx - getSpudMargin();
                   if (bothCount === 1) {
@@ -1050,18 +1117,18 @@ const FunPath = () => {
                   }
                   (guntherOrPharoah()[0] as HTMLImageElement).style.marginTop = catNewMarg.toString() + "px" 
                 } else if (spudCss.marginLeft === getDefaultMargs().defaultMarginLeft &&
-                ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < 70 &&
-                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -70)) {
+                ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top < getClosenessMarg() &&
+                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom - spud.getBoundingClientRect().top > -(getClosenessMarg()))) {
                   const catRemovePx: number = Number(catMarginTop.match(regex)?.join(''))
                   const catNewMarg: number = catRemovePx + getSpudMargin();
                   if (bothCount === 1) {
                     const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                     const cat2MarginTop: string = cat2Css.marginTop
                     const cat2MarginLeft: string = cat2Css.marginLeft
-                    if (!((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -70)) {
-                      if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 70 &&
-                      (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 70) {
+                    if (!((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -(getClosenessMarg()))) {
+                      if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg() &&
+                      (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg()) {
                         const cat2RemovePxTop: number = Number(cat2MarginTop.match(regex)?.join(''))
                         const cat2RemovePxLeft: number = Number(cat2MarginLeft.match(regex)?.join(''))
                         const cat2NewMargTop: number = cat2RemovePxTop + getSpudMargin();
@@ -1073,8 +1140,8 @@ const FunPath = () => {
                         const cat2NewMarg: number = cat2RemovePx + getSpudMargin();
                         (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
                       }
-                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -70) {
+                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().bottom > -(getClosenessMarg())) {
                       const cat2RemovePx: number = Number(cat2MarginTop.match(regex)?.join(''))
                       const cat2NewMarg: number = cat2RemovePx - (getSpudMargin() * 2);
                       (guntherOrPharoah()[1] as HTMLImageElement).style.marginTop = cat2NewMarg.toString() + "px"
@@ -1085,13 +1152,13 @@ const FunPath = () => {
                     }
                   }
                   (guntherOrPharoah()[0] as HTMLImageElement).style.marginTop = catNewMarg.toString() + "px" 
-                } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right < 70 &&
-                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right > -70) {
+                } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right < getClosenessMarg() &&
+                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right > -(getClosenessMarg())) {
                   const catRemovePx: number = Number(catMarginLeft.match(regex)?.join(''))
                   const catNewMarg: number = catRemovePx - getSpudMargin();
                   if (bothCount === 1) {
-                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right > -70) {
+                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().right > -(getClosenessMarg())) {
                       const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                       const cat2MarginLeft: string = cat2Css.marginLeft
                       const cat2MarginTop: string = cat2Css.marginTop
@@ -1117,18 +1184,18 @@ const FunPath = () => {
                     const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                     const cat2MarginTop: string = cat2Css.marginTop
                     const cat2MarginLeft: string = cat2Css.marginLeft
-                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom > -70) {
+                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom > -(getClosenessMarg())) {
                       const cat2RemovePx: number = Number(cat2MarginTop.match(regex)?.join(''))
                       const cat2NewMarg: number = cat2RemovePx - getSpudMargin();
                       (guntherOrPharoah()[1] as HTMLImageElement).style.marginTop = cat2NewMarg.toString() + "px"
-                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top > -70) {
+                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().bottom - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().top > -(getClosenessMarg())) {
                       const cat2RemovePx: number = Number(cat2MarginTop.match(regex)?.join(''))
                       const cat2NewMarg: number = cat2RemovePx + getSpudMargin();
                       (guntherOrPharoah()[1] as HTMLImageElement).style.marginTop = cat2NewMarg.toString() + "px"
-                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < 70 &&
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -70) {
+                    } else if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left < getClosenessMarg() &&
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().right - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left > -(getClosenessMarg())) {
                       const cat2RemovePx: number = Number(cat2MarginLeft.match(regex)?.join(''))
                       const cat2NewMarg: number = cat2RemovePx + getSpudMargin();
                       (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
@@ -1161,7 +1228,6 @@ const FunPath = () => {
               bothCount += 1
             }
             if (leftCount === 1) {
-              console.log('move-3')
               const spud: HTMLImageElement = document.getElementById("spud") as HTMLImageElement
               const spudCss: CSSStyleDeclaration = getComputedStyle(spud)
               const marginLeft: string = spudCss.marginLeft
@@ -1183,17 +1249,17 @@ const FunPath = () => {
                 spudCss.marginLeft === getDefaultMargs().leftOffshootMargins[4].marginLeft) {
                   const catNewMarg: number = catRemovePx - getSpudMargin();
                   (guntherOrPharoah()[0] as HTMLImageElement).style.marginLeft = catNewMarg.toString() + "px" 
-                } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right < 70 &&
-                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right > -70) {
+                } else if ((guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right < getClosenessMarg() &&
+                (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right > -(getClosenessMarg())) {
                   const catNewMarg: number = catRemovePx - getSpudMargin();
                   if (bothCount === 1) {
                     const cat2Css: CSSStyleDeclaration = getComputedStyle(guntherOrPharoah()[1] as HTMLImageElement)
                     const cat2MarginLeft: string = cat2Css.marginLeft
                     const cat2MarginTop: string = cat2Css.marginTop
-                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > 70 ||
-                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < -70) {
-                      if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom < 70 &&
-                      (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom > -70) {
+                    if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > getClosenessMarg() ||
+                    (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < -(getClosenessMarg())) {
+                      if ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom < getClosenessMarg() &&
+                      (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - (guntherOrPharoah()[0] as HTMLImageElement).getBoundingClientRect().bottom > -(getClosenessMarg())) {
                         const cat2RemovePxLeft: number = Number(cat2MarginLeft.match(regex)?.join(''))
                         const cat2RemovePxTop: number = Number(cat2MarginTop.match(regex)?.join(''))
                         const cat2NewMargLeft: number = cat2RemovePxLeft - (getSpudMargin() * 3)
@@ -1236,10 +1302,10 @@ const FunPath = () => {
                 spudCss.marginLeft === getDefaultMargs().leftOffshootMargins[4].marginLeft) {
                   const cat2NewMarg = cat2RemovePx + 0;
                   (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
-                } else if (((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right < 70 &&
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right > -70) &&
-                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < 70 &&
-                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -70)) {
+                } else if (((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right < getClosenessMarg() &&
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().left - spud.getBoundingClientRect().right > -(getClosenessMarg())) &&
+                ((guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top < getClosenessMarg() &&
+                (guntherOrPharoah()[1] as HTMLImageElement).getBoundingClientRect().top - spud.getBoundingClientRect().top > -(getClosenessMarg()))) {
                   const cat2NewMarg = cat2RemovePx - (getSpudMargin() * 2);
                   (guntherOrPharoah()[1] as HTMLImageElement).style.marginLeft = cat2NewMarg.toString() + "px"
                 } else {

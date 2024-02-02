@@ -9,7 +9,7 @@ const SpudsSongsWindow = ({ setShowSpudsSongsTerminal }: PropsType) => {
     <>
     <h1 className="terminal-window-header" id="spuds-songs-header">Spud's Songs</h1>
     <p className="terminal-window-explanation" id="spuds-songs-explanation">some music i've made</p>
-    <Link to="/spudssongs" target="_blank" rel="noreferrer"><button className="terminal-window-button" id="spuds-songs-button">launch</button></Link>
+    <Link to="/spudssongs" target="_blank" rel="noreferrer" className="terminal-links"><button className="terminal-window-button" id="spuds-songs-button">launch</button></Link>
     <button className="close-button" onClick={() => {
         setShowSpudsSongsTerminal(false);
         (document.getElementById("spuds-ship-window") as HTMLDivElement).style.display = "none"
