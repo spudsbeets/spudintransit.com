@@ -851,7 +851,7 @@ body, html {
   background-color: #33cc33;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-around
 }
 
@@ -1189,6 +1189,25 @@ body, html {
 
 #taunt-div-pharoah {
   margin-top: 250px;
+}
+
+#landscape-div {
+  position: absolute;
+  margin-top: -300px;
+  margin-left: -320px;
+  width: 400px;
+  background-color: #33cc33;
+  animation: fadeinfadeout 8s ease-out 1;
+  border: 8px ridge #057405;
+  opacity: 0;
+}
+
+#landscape-message {
+  background-color: #33cc33;
+  font-family: 'Silkscreen', serif;
+  padding: 10px;
+  font-size: 2em;
+  text-align: center;
 }
 
 @media screen and (max-width: 1350px) {
@@ -2215,16 +2234,2160 @@ margin-top: 328px;
 }
 
 @media screen and (max-width: 850px) {
-/* Minor adjustments within components and maybe terminal windows? */
 
+  @keyframes buttonMovement {
+    0% { margin-top: 100px; margin-right: 0px }
+    16% { margin-top: -175px; margin-right: 0px }
+    32% { margin-top: -175px; margin-right: 450px }
+    48% { margin-top: 175px; margin-right: 450px }
+    64% { margin-top: 175px; margin-right: -450px }
+    80% { margin-top: -160px; margin-right: -450px } 
+    92% { margin-top: -160px; margin-right: 175px }
+    100% { margin-top: 100px; margin-right: 0px }
+  }
+
+  @keyframes tuemove {
+  0% { margin-top: 0px }
+  22% { margin-top: 65px }
+  40% { margin-top: 165px }
+  74% { margin-top: 79px }
+  100% { margin-top: 0px }
 }
 
-@media screen and (max-width: 700px) {
-/* Adjust movement system and all else for mobile */
-  
+@keyframes tuemove2 {
+  0% { margin-top: 36px }
+  9% { margin-top: 99px }
+  37% { margin-top: 84px }
+  51% { margin-top: 152px }
+  100% { margin-top: 36px }
 }
 
-@media screen and (max-width: 450px) {
-/* Style home screen and set up alert to turn phone to landscape */
+@keyframes tuemove3 {
+  0% { margin-top: 70px }
+  19% { margin-top: 105px }
+  41% { margin-top: 131px }
+  60% { margin-top: 150px }
+  100% { margin-top: 70px }
+}
+
+@keyframes tuemove4 {
+  0% { margin-top: 83px }
+  30% { margin-top: 123px }
+  55% { margin-top: 3px }
+  100% { margin-top: 83px }
+}
+
+@keyframes tuemove5 {
+  0% { margin-top: 127px }
+  60% { margin-top: 167px } 
+  100% { margin-top: 127px }
+}
+
+@keyframes tuemove6 {
+  0% { margin-top: 138px }
+  70% { margin-top: 44px }
+  90% { margin-top: 195px }
+  100% { margin-top: 138px }
+}
+
+@keyframes tuemove7 {
+  0% { margin-top: 145px }
+  12% { margin-top: 162px }
+  44% { margin-top: 131px }
+  69% { margin-top: 103px }
+  100% { margin-top: 145px }
+}
+
+@keyframes tuemove8 {
+  0% { margin-top: 183px }
+  30% { margin-top: 23px }
+  53% { margin-top: 153px }
+  100% { margin-top: 183px }
+}
+
+@keyframes tuemove9 {
+  0% { margin-top: 161px }
+  20% { margin-top: 195px }
+  70% { margin-top: 107px }
+  100% { margin-top: 161px }
+}
+
+@keyframes tuemove10 {
+  0% { margin-top: 170px }
+  23% { margin-top: 160px }
+  81% { margin-top: 80px }
+  100% { margin-top: 170px }
+}
+
+  .welcome-letters {
+    font-size: 4.2em;
+  }
     
+  #spuds-lair-text {
+    font-size: 1.8em;
+  }
+    
+  .entry-buttons {
+    font-size: .9rem;
+    width: 180px;
+    height: 65px;
+  }
+
+  #arrow-instructions {
+    width: 140px;
+    height: 65px;
+    margin-right: 160px;
+    margin-bottom: 20px;
+    margin-left: 400px;
+    margin-top: 70px;
+  }
+  
+  #arrow-explanation {
+    font-size: .7em;
+  }
+
+  #feed-gunther-window {
+    margin-top: 165px;
+    margin-left: 360px;
+  }
+
+  #spuds-snips-tuesday-component, #spuds-snips-wednesday-component {
+    height: 390px;
+    border: 11px ridge #057405;
+  }
+  
+  #spuds-songs-component, #spuds-stuff-component {
+    height: 390px;
+    border: 11px ridge #057405;
+  }
+  
+  #tuesday-snips-header {
+    font-size: 2em;
+    border: 5px inset #014801
+  }
+  
+  #wednesday-snips-header {
+    font-size: 1.5em;
+    border: 5px inset #014801
+  }
+  
+  #spuds-snips-tuesday-name-area, #spuds-snips-wednesday-name-area {
+    font-size: 1em;
+  }
+  
+  .tuesday-buttons {
+    background-color: #014801;
+    font-size: 1.6em;
+    height: 55px;
+    width: 55px;
+    border: 9px inset #057405
+  }
+  
+  .wednesday-buttons {
+    font-size: 1.45em;
+    height: 50px;
+    width: 50px;
+    border: 9px inset #057405;
+    margin-top: 120px
+  }
+  
+  .tuesday-buttons:hover, .wednesday-buttons:hover {
+    cursor: pointer;
+    background-color: #ad242c;
+    border: 9px outset #730e15;
+  }
+
+  .song-arrows {
+    width: 42px;
+    height: 25px;
+    font-size: 1em;
+  }
+  
+  #song-arrow-left, #stuff-arrow-left {
+    margin-left: 6px;
+    margin-bottom: 6px;
+  }
+  
+  #song-arrow-right, #stuff-arrow-right {
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+  
+  .song-page-header, .stuff-page-header {
+    font-size: 1.8em;
+  }
+  
+  .release-image {
+    width: 155px;
+    height: 155px
+  }
+  
+  .release-title {
+    max-width: 155px;
+    font-size: .9em
+  }
+  
+  .release-explanation-div {
+    width: 155px;
+    height: 115px;
+    margin-top: -140px;
+    margin-left: 10px
+  }
+  
+  .link-images {
+    max-width: 145px;
+    max-height: 108px
+  }
+  
+  #spotify-image {
+    margin-top: 60px;
+  }
+  
+  .props-image {
+    max-width: 140px;
+    max-height: 140px
+  }
+  
+  .props-explanation {
+    margin-left: -20px;
+  }
+  
+  #spencer-props-div {
+    margin-top: 80px;
+  }
+
+  #craig-props-div {
+    margin-top: 15px;
+  }
+  
+  .release-explanation {
+    font-size: .6em;
+  }
+  
+  #c-flower-mountain-title {
+    margin-left: 8px;
+  } 
+  
+  .props-explanation {
+    max-width: 170px;
+    font-size: .65em
+  }
+
+  #stuff-arrow-right, #stuff-arrow-left {
+    margin-top: 4px;
+  }
+
+  .stuff-header {
+    font-size: 1em;
+  }
+  
+  .stuff-div {
+    border: 9px inset #013220
+  }
+  
+  .stuff-list {
+    width: 130px
+  }
+  
+  .stuff-list-item {
+    font-size: .65em;
+    margin-right: 50px
+  }
+
+  #music-stuff-list > li {
+    padding-bottom: 20px;
+    padding-top: 10px;  
+  }
+  
+  .stuff-list-logo {
+    max-height: 16px;
+    max-width: 16px;
+    margin-left: 5px;
+    padding-top: 1px;
+  }
+  
+  .stuff-page-link-img {
+    max-height: 100px;
+    max-width: 100px
+  }
+  
+  #stuff-page-links {
+    margin-top: 60px;
+  }
+  
+  .stuff-page-link-title {
+    font-size: 1.32em;
+  }
+  
+  .stuff-page-link-div {
+    width: 135px;
+    height: 135px
+  }
+  
+  #github-img-link {
+    padding-top: 20px;
+  }
+  
+  #resume-img-link {
+    font-size: 1.5em;
+    padding-top: 40px;
+  }
+  
+  #bio, #email, #instagram {
+    font-size: .75em;
+    text-align: center;
+  }
+  
+  #bio-div {
+    border: 12px inset #014801;
+    margin-top: -12px;
+  }
+
+  @media screen and (max-height: 400px) {
+
+    @keyframes buttonMovement {
+      0% { margin-top: 75px; margin-right: 0px }
+      16% { margin-top: -140px; margin-right: 0px }
+      32% { margin-top: -140px; margin-right: 450px }
+      48% { margin-top: 140px; margin-right: 450px }
+      64% { margin-top: 140px; margin-right: -450px }
+      80% { margin-top: -125px; margin-right: -450px } 
+      92% { margin-top: -125px; margin-right: 180px }
+      100% { margin-top: 75px; margin-right: 0px }
+    }
+
+    @keyframes zoomiePharoah {
+      0% { margin-top: 20px; margin-left: 0px }
+      23% { margin-top: 10px; margin-left: -40px }
+      40% { margin-top: 50px; margin-left: 60px }
+      60% { margin-top: -5px; margin-left: 20px }
+      77% { margin-top: 0px; margin-left: 25px }
+      100% { margin-top: 20px; margin-left: 0px }
+    }
+
+    @keyframes tuemove {
+      0% { margin-top: 0px }
+      22% { margin-top: 65px }
+      40% { margin-top: 115px }
+      74% { margin-top: 79px }
+      100% { margin-top: 0px }
+    }
+    
+    @keyframes tuemove2 {
+      0% { margin-top: 36px }
+      9% { margin-top: 99px }
+      37% { margin-top: 84px }
+      51% { margin-top: 122px }
+      100% { margin-top: 36px }
+    }
+    
+    @keyframes tuemove3 {
+      0% { margin-top: 40px }
+      19% { margin-top: 75px }
+      41% { margin-top: 101px }
+      60% { margin-top: 110px }
+      100% { margin-top: 40px }
+    }
+    
+    @keyframes tuemove4 {
+      0% { margin-top: 53px }
+      30% { margin-top: 93px }
+      55% { margin-top: 3px }
+      100% { margin-top: 53px }
+    }
+    
+    @keyframes tuemove5 {
+      0% { margin-top: 67px }
+      60% { margin-top: 89px } 
+      100% { margin-top: 67px }
+    }
+    
+    @keyframes tuemove6 {
+      0% { margin-top: 78px }
+      70% { margin-top: 44px }
+      90% { margin-top: 95px }
+      100% { margin-top: 78px }
+    }
+    
+    @keyframes tuemove7 {
+      0% { margin-top: 85px }
+      12% { margin-top: 122px }
+      44% { margin-top: 101px }
+      69% { margin-top: 63px }
+      100% { margin-top: 85px }
+    }
+    
+    @keyframes tuemove8 {
+      0% { margin-top: 93px }
+      30% { margin-top: 16px }
+      53% { margin-top: 83px }
+      100% { margin-top: 93px }
+    }
+    
+    @keyframes tuemove9 {
+      0% { margin-top: 101px }
+      20% { margin-top: 125px }
+      70% { margin-top: 77px }
+      100% { margin-top: 101px }
+    }
+    
+    @keyframes tuemove10 {
+      0% { margin-top: 110px }
+      23% { margin-top: 102px }
+      81% { margin-top: 60px }
+      100% { margin-top: 110px }
+    }
+
+    @keyframes feedPharoah {
+      0% { margin-top: 15px; margin-left: -180px }
+      10% { margin-top: 245px; margin-left: 212px }
+      26% { margin-top: -194px; margin-left: 371px }
+      37% { margin-top: 15px; margin-left: -162px }
+      55% { margin-top: 22px; margin-left: -77px }
+      78% { margin-top: -50px; margin-left: 99px }
+      100% { margin-top: -100px; margin-left: -60px }
+    }
+    
+    @keyframes foodPharoah {
+      from { margin-top: 0px; margin-left: 0px }
+      to { margin-top: 45px; margin-left: -130px }
+    }
+
+    @keyframes feedGunther {
+      from { margin-top: 10px; margin-left: -180px }
+      to { margin-top: 80px; margin-left: -180px }
+    }
+
+    @keyframes foodGunther {
+      from { margin-top: 0px; margin-left: 0px }
+      to { margin-top: -45px; margin-left: -110px }
+    }
+
+    .welcome-letters {
+      font-size: 3.3em;
+    }
+      
+    #spuds-lair-text {
+      font-size: 1.4em;
+    }
+      
+    .entry-buttons {
+      font-size: .8rem;
+      width: 170px;
+      height: 55px;
+    }
+
+    #w {
+      margin-top: 80px
+    }
+    
+    #e {
+      margin-top: 40px
+    }
+    
+    #l {
+      margin-top: 70px
+    }
+    
+    #c {
+      margin-top: 90px
+    }
+    
+    #o {
+      margin-top: 120px
+    }
+    
+    #m {
+      margin-top: 40px
+    }
+    
+    #e {
+      margin-top: 30px
+    }
+
+    .tile, .offshoot-tile-left, .offshoot-tile-right, .terminal {
+      width: 120px;
+      height: 120px;
+    }
+    
+    #main-hallway {
+      left: 744px;
+      width: 153px;
+    }
+    
+    #left-offshoot-hallways {
+      height: 3960px
+    }
+    
+    #right-offshoot-hallways {
+      left: 868px;
+      height: 3960px
+    }
+    
+    #spud {
+      width: 96px;
+      height: 96px;
+      margin-top: -116px;
+      margin-left: 12px;
+    }
+    
+    #gunther-image-follow {
+      width: 96px;
+      height: 96px;
+      margin-top: 10px;
+      margin-left: 136px;
+    }
+    
+    #gunther-image-feed {
+      width: 96px;
+      height: 96px;
+      margin-left: -110px;
+      margin-top: 7px;
+    }
+    
+    #pharoah-image-follow {
+      width: 96px;
+      height: 96px;
+      margin-left: -115px;
+      margin-top: 13px;
+    }
+    
+    #pharoah-image-feed {
+      width: 96px;
+      height: 96px;
+      margin-left: -150px;
+      margin-top: 11.5px;
+    }
+    
+    #offshoot-2 {
+    margin-top: 372px;
+    }
+    
+    #offshoot-3 {
+    margin-top: 620px;
+    }
+    
+    #offshoot-6 {
+    margin-top: 372px;
+    }
+    
+    #offshoot-8 {
+    margin-top: 496px;
+    }
+    
+    #offshoot-9 {
+    margin-top: 372px;
+    }
+    
+    #offshoot-1 {
+    margin-top: 124px;
+    }
+    
+    #offshoot-4 {
+    margin-top: 496px;
+    }
+    
+    #offshoot-5 {
+    margin-top: 496px;
+    }
+    
+    #offshoot-7 {
+    margin-top: 496px;
+    }
+    
+    #offshoot-10 {
+    margin-top: 248px;
+    }
+
+    .direction-button {
+      font-size: 1.2em;
+      height: 35px;
+      width: 35px;
+    }
+    
+    #direction-arrows-updown {
+      margin-right: 42px;
+      width: 45px;
+    }
+    
+    #direction-arrows-leftright {
+      margin-bottom: 30px;
+    }
+    
+    #down-arrow {
+      margin-top: 20px;
+    }
+    
+    #right-arrow {
+      margin-left: 50px;
+    }
+
+    .terminal-window {
+      width: 180px;
+      height: 95px;
+      border: solid #013220 5px;
+      margin-top: -105px
+    }
+    
+    .terminal-window-header {
+      font-size: .7rem;
+    }
+    
+    .terminal-window-explanation {
+       font-size: .45rem
+    }
+    
+    .terminal-window-button {
+      font-size: .4rem
+    }
+    
+    #spuds-snips-wednesday-header, #spuds-snips-tuesday-header, #spuds-songs-header, #spuds-stuff-header, #spuds-ship-header {
+      font-size: .9em;
+    }
+    
+    #spuds-songs-explanation, #spuds-stuff-explanation, #spuds-ship-explanation {
+      margin-top: 6px;
+    }
+
+    #spuds-snips-wednesday-explanation, #spuds-snips-tuesday-explanation {
+      margin-top: 0px;
+    }
+    
+    .close-button {
+      font-size: .2rem;
+    }
+    
+    .cat-images, .food-images {
+      width: 42px;
+      height: 42px;
+      margin-top: 10px
+    }
+    
+    #cocktail-clash-window {
+      margin-right: 465px;
+    }
+    
+    #retrieve-pharoah-window {
+      margin-left: 600px;
+    }
+    
+    #retrieve-gunther-window {
+      margin-right: 215px;
+    }
+    
+    #spuds-stuff-window, #feed-pharoah-window {
+      margin-left: 215px;
+    }
+    
+    #spuds-snips-wednesday-window, #spuds-songs-window  {
+      margin-right: 480px;
+    }
+    
+    #spuds-snips-tuesday-window {
+      margin-left: 340px;
+    }
+    
+    #spuds-ship-window {
+      margin-right: 340px;
+    }
+    
+    #feed-gunther-window {
+      margin-top: 120px;
+      margin-left: 300px;
+    }
+
+    #feed-pharoah-button, #feed-gunther-button {
+      font-size: .35rem;
+    }
+
+    #spuds-snips-tuesday-component, #spuds-snips-wednesday-component {
+      height: 300px;
+      border: 11px ridge #057405;
+    }
+          
+    #spuds-songs-component, #spuds-stuff-component {
+      height: 300px;
+      border: 11px ridge #057405;
+    }
+
+    #song-arrow-left, #stuff-arrow-left {
+      margin-left: 2px;
+      margin-bottom: 2px;
+    }
+    
+    #song-arrow-right, #stuff-arrow-right {
+      margin-right: 2px;
+      margin-bottom: 2px;
+    }
+
+    .song-page-header, .stuff-page-header {
+      font-size: 1.2em;
+    }
+    
+    .release-image {
+      width: 120px;
+      height: 120px
+    }
+    
+    .release-title {
+      max-width: 120px;
+      font-size: .75em
+    }
+    
+    .release-explanation-div {
+      width: 120px;
+      height: 85px;
+      margin-top: -120px;
+      margin-left: 10px
+    }
+
+    .release-explanation {
+      font-size: .5rem;
+    }
+
+    .link-images {
+      max-width: 105px;
+      max-height: 70px
+    }
+
+    #spotify-image {
+      margin-top: 140px;
+    }
+    
+    #soundcloud-image {
+      margin-top: 90px;
+    }
+    
+    #bandcamp-image {
+      margin-top: -20px;
+    }
+    
+    #youtube-image {
+      margin-top: 150px;
+    }
+
+    .props-image {
+      max-width: 100px;
+      max-height: 100px
+    }
+    
+    .props-explanation {
+      margin-left: -20px;
+    }
+    
+    #spencer-props-div {
+      margin-top: 80px;
+    }
+  
+    #craig-props-div {
+      margin-top: 25px;
+    }
+
+    .props-explanation {
+      max-width: 150px;
+      font-size: .5em
+    }
+
+    .stuff-list-item {
+      font-size: .45em;
+      margin-right: 50px
+    }
+  
+    #music-stuff-list > li {
+      padding-bottom: 10px;
+      padding-top: 5px;  
+    }
+    
+    .stuff-list-logo {
+      max-height: 10px;
+      max-width: 10px;
+      margin-left: 5px;
+      padding-top: 1px;
+    }
+
+    #misc-stuff-list > li {
+      padding-bottom: 10px;
+    }
+
+    #language-logo {
+      max-height: 10px;
+      max-width: 10px;
+      margin-left: 70px
+    }
+
+    #writing-list-item {
+      margin-top: -10px;
+    }
+
+    .stuff-page-link-img {
+      max-height: 80px;
+      max-width: 80px
+    }
+    
+    #stuff-page-links {
+      margin-top: 50px;
+    }
+    
+    .stuff-page-link-title {
+      font-size: 1.2em;
+    }
+    
+    .stuff-page-link-div {
+      width: 100px;
+      height: 100px;
+      border: 15px inset #013220
+    }
+
+    .stuff-page-link-div:hover {
+      border: 15px inset #730e15
+    }
+    
+    #github-img-link {
+      padding-top: 20px;
+    }
+    
+    #resume-img-link {
+      font-size: 1.2em;
+      padding-top: 25px;
+    }
+
+    .stuff-page-link-title {
+      font-size: .8em;
+    }
+    
+    #bio, #email, #instagram {
+      font-size: .7em;
+      text-align: center;
+    }
+    
+    #bio-div {
+      border: 8px inset #014801;
+      margin-top: -6px;
+    }
+
+    #email {
+      margin-top: 25px;
+    }
+
+    .taunt-divs {
+      margin-top: -100px;
+      margin-left: -220px;
+      width: 200px;
+      height: 70px;
+      border: 4px ridge #057405;
+    }
+    
+    .taunt-messages {
+      padding: 5px;
+      font-size: .7rem;
+    }
+    
+    #taunt-div-pharoah {
+      margin-top: 130px;
+    }
+
+    .thank-you-messages {
+      font-size: 1.3em;
+    }
+
+  }
+
+  @media screen and (max-height: 330px) {
+
+    @keyframes tuemove {
+      0% { margin-top: 0px }
+      22% { margin-top: 45px }
+      40% { margin-top: 85px }
+      74% { margin-top: 69px }
+      100% { margin-top: 0px }
+    }
+    
+    @keyframes tuemove2 {
+      0% { margin-top: 36px }
+      9% { margin-top: 79px }
+      37% { margin-top: 64px }
+      51% { margin-top: 92px }
+      100% { margin-top: 36px }
+    }
+    
+    @keyframes tuemove3 {
+      0% { margin-top: 40px }
+      19% { margin-top: 65px }
+      41% { margin-top: 81px }
+      60% { margin-top: 90px }
+      100% { margin-top: 40px }
+    }
+    
+    @keyframes tuemove4 {
+      0% { margin-top: 53px }
+      30% { margin-top: 73px }
+      55% { margin-top: 3px }
+      100% { margin-top: 53px }
+    }
+    
+    @keyframes tuemove5 {
+      0% { margin-top: 67px }
+      60% { margin-top: 79px } 
+      100% { margin-top: 67px }
+    }
+    
+    @keyframes tuemove6 {
+      0% { margin-top: 78px }
+      70% { margin-top: 44px }
+      90% { margin-top: 85px }
+      100% { margin-top: 78px }
+    }
+    
+    @keyframes tuemove7 {
+      0% { margin-top: 85px }
+      12% { margin-top: 92px }
+      44% { margin-top: 81px }
+      69% { margin-top: 63px }
+      100% { margin-top: 85px }
+    }
+    
+    @keyframes tuemove8 {
+      0% { margin-top: 84px }
+      30% { margin-top: 16px }
+      53% { margin-top: 63px }
+      100% { margin-top: 84px }
+    }
+    
+    @keyframes tuemove9 {
+      0% { margin-top: 81px }
+      20% { margin-top: 95px }
+      70% { margin-top: 67px }
+      100% { margin-top: 81px }
+    }
+    
+    @keyframes tuemove10 {
+      0% { margin-top: 90px }
+      23% { margin-top: 82px }
+      81% { margin-top: 40px }
+      100% { margin-top: 90px }
+    }
+
+    #spuds-snips-tuesday-component, #spuds-snips-wednesday-component {
+      height: 265px;
+      border: 9px ridge #057405;
+    }
+          
+    #spuds-songs-component, #spuds-stuff-component {
+      height: 265px;
+      border: 9px ridge #057405;
+    }
+
+    #song-arrow-left, #stuff-arrow-left {
+      margin-left: 0px;
+      margin-bottom: 0px;
+    }
+    
+    #song-arrow-right, #stuff-arrow-right {
+      margin-right: 0px;
+      margin-bottom: 0px;
+    }
+
+    .song-page-header, .stuff-page-header {
+      font-size: .9rem;
+    }
+    
+    .release-image {
+      width: 120px;
+      height: 120px
+    }
+    
+    .release-title {
+      max-width: 120px;
+      font-size: .75em
+    }
+    
+    .release-explanation-div {
+      width: 120px;
+      height: 85px;
+      margin-top: -120px;
+      margin-left: 10px
+    }
+
+    .release-explanation {
+      font-size: .5rem;
+    }
+
+    .link-images {
+      max-width: 85px;
+      max-height: 60px
+    }
+
+    #spotify-image {
+      margin-top: 140px;
+    }
+    
+    #soundcloud-image {
+      margin-top: 90px;
+    }
+    
+    #bandcamp-image {
+      margin-top: -10px;
+    }
+    
+    #youtube-image {
+      margin-top: 150px;
+    }
+
+    .props-image {
+      max-width: 100px;
+      max-height: 100px
+    }
+    
+    .props-explanation {
+      margin-left: -20px;
+    }
+    
+    #spencer-props-div {
+      margin-top: 80px;
+    }
+  
+    #craig-props-div {
+      margin-top: 25px;
+    }
+
+    .props-explanation {
+      max-width: 150px;
+      font-size: .5em
+    }
+
+    .stuff-list {
+      width: 120px;
+    }
+
+    .stuff-list-item {
+      font-size: .5rem;
+      margin-right: 50px
+    }
+  
+    #music-stuff-list > li {
+      padding-bottom: 6px;
+      padding-top: 2px;  
+    }
+    
+    .stuff-list-logo {
+      max-height: 10px;
+      max-width: 10px;
+      margin-left: 5px;
+      padding-top: 1px;
+    }
+
+    #misc-stuff-list > li {
+      padding-bottom: 5px;
+    }
+
+    #programming-stuff-list > li {
+      padding-top: 2px;
+    }
+
+    #language-logo {
+      max-height: 10px;
+      max-width: 10px;
+      margin-left: 70px
+    }
+
+    #writing-list-item {
+      margin-top: -10px;
+    }
+
+    .stuff-page-link-img {
+      max-height: 80px;
+      max-width: 80px
+    }
+    
+    #stuff-page-links {
+      margin-top: 50px;
+    }
+    
+    .stuff-page-link-title {
+      font-size: 1.2em;
+    }
+    
+    .stuff-page-link-div {
+      width: 100px;
+      height: 100px;
+      border: 15px inset #013220
+    }
+
+    .stuff-page-link-div:hover {
+      border: 15px inset #730e15
+    }
+    
+    #github-img-link {
+      padding-top: 20px;
+    }
+    
+    #resume-img-link {
+      font-size: 1.2em;
+      padding-top: 25px;
+    }
+
+    .stuff-page-link-title {
+      font-size: .8em;
+    }
+    
+    #bio, #email, #instagram {
+      font-size: .7em;
+      text-align: center;
+    }
+    
+    #bio-div {
+      border: 8px inset #014801;
+      margin-top: -6px;
+    }
+
+    #email {
+      margin-top: 15px;
+    }
+
+    #spuds-snips-tuesday-name-area, #spuds-snips-wednesday-name-area {
+      font-size: 1em;
+    }
+    
+    .tuesday-buttons {
+      font-size: 1.3em;
+      height: 45px;
+      width: 45px;
+      border: 6px inset #057405
+    }
+    
+    .wednesday-buttons {
+      font-size: 1.2em;
+      height: 40px;
+      width: 40px;
+      border: 6px inset #057405;
+      margin-top: 120px
+    }
+    
+    .tuesday-buttons:hover, .wednesday-buttons:hover {
+      cursor: pointer;
+      background-color: #ad242c;
+      border: 6px outset #730e15;
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 650px) {
+
+  @media screen and (max-height: 600px) {
+
+    @keyframes buttonMovement {
+      0% { margin-top: 75px; margin-right: 0px }
+      16% { margin-top: -140px; margin-right: 0px }
+      32% { margin-top: -140px; margin-right: 360px }
+      48% { margin-top: 140px; margin-right: 360px }
+      64% { margin-top: 140px; margin-right: -360px }
+      80% { margin-top: -125px; margin-right: -360px } 
+      92% { margin-top: -125px; margin-right: 180px }
+      100% { margin-top: 75px; margin-right: 0px }
+    }
+
+    @keyframes zoomiePharoah {
+      0% { margin-top: 20px; margin-left: 0px }
+      23% { margin-top: 10px; margin-left: -40px }
+      40% { margin-top: 50px; margin-left: 60px }
+      60% { margin-top: -5px; margin-left: 20px }
+      77% { margin-top: 0px; margin-left: 25px }
+      100% { margin-top: 20px; margin-left: 0px }
+    }
+
+    @keyframes tuemove {
+      0% { margin-top: 0px }
+      22% { margin-top: 65px }
+      40% { margin-top: 115px }
+      74% { margin-top: 79px }
+      100% { margin-top: 0px }
+    }
+    
+    @keyframes tuemove2 {
+      0% { margin-top: 36px }
+      9% { margin-top: 99px }
+      37% { margin-top: 84px }
+      51% { margin-top: 122px }
+      100% { margin-top: 36px }
+    }
+    
+    @keyframes tuemove3 {
+      0% { margin-top: 40px }
+      19% { margin-top: 75px }
+      41% { margin-top: 101px }
+      60% { margin-top: 110px }
+      100% { margin-top: 40px }
+    }
+    
+    @keyframes tuemove4 {
+      0% { margin-top: 53px }
+      30% { margin-top: 93px }
+      55% { margin-top: 3px }
+      100% { margin-top: 53px }
+    }
+    
+    @keyframes tuemove5 {
+      0% { margin-top: 67px }
+      60% { margin-top: 89px } 
+      100% { margin-top: 67px }
+    }
+    
+    @keyframes tuemove6 {
+      0% { margin-top: 78px }
+      70% { margin-top: 44px }
+      90% { margin-top: 95px }
+      100% { margin-top: 78px }
+    }
+    
+    @keyframes tuemove7 {
+      0% { margin-top: 85px }
+      12% { margin-top: 122px }
+      44% { margin-top: 101px }
+      69% { margin-top: 63px }
+      100% { margin-top: 85px }
+    }
+    
+    @keyframes tuemove8 {
+      0% { margin-top: 93px }
+      30% { margin-top: 16px }
+      53% { margin-top: 83px }
+      100% { margin-top: 93px }
+    }
+    
+    @keyframes tuemove9 {
+      0% { margin-top: 101px }
+      20% { margin-top: 125px }
+      70% { margin-top: 77px }
+      100% { margin-top: 101px }
+    }
+    
+    @keyframes tuemove10 {
+      0% { margin-top: 110px }
+      23% { margin-top: 102px }
+      81% { margin-top: 60px }
+      100% { margin-top: 110px }
+    }
+
+    @keyframes feedPharoah {
+      0% { margin-top: 15px; margin-left: -180px }
+      10% { margin-top: 245px; margin-left: 212px }
+      26% { margin-top: -194px; margin-left: 371px }
+      37% { margin-top: 15px; margin-left: -162px }
+      55% { margin-top: 22px; margin-left: -77px }
+      78% { margin-top: -50px; margin-left: 99px }
+      100% { margin-top: -100px; margin-left: -60px }
+    }
+    
+    @keyframes foodPharoah {
+      from { margin-top: 0px; margin-left: 0px }
+      to { margin-top: 45px; margin-left: -130px }
+    }
+
+    @keyframes feedGunther {
+      from { margin-top: 10px; margin-left: -180px }
+      to { margin-top: 80px; margin-left: -180px }
+    }
+
+    @keyframes foodGunther {
+      from { margin-top: 0px; margin-left: 0px }
+      to { margin-top: -45px; margin-left: -110px }
+    }
+
+    .welcome-letters {
+      font-size: 3.3em;
+    }
+      
+    #spuds-lair-text {
+      font-size: 1.4em;
+    }
+      
+    .entry-buttons {
+      font-size: .8rem;
+      width: 170px;
+      height: 55px;
+    }
+
+    #w {
+      margin-top: 80px
+    }
+    
+    #e {
+      margin-top: 40px
+    }
+    
+    #l {
+      margin-top: 70px
+    }
+    
+    #c {
+      margin-top: 90px
+    }
+    
+    #o {
+      margin-top: 120px
+    }
+    
+    #m {
+      margin-top: 40px
+    }
+    
+    #e {
+      margin-top: 30px
+    }
+
+    /* .tile, .offshoot-tile-left, .offshoot-tile-right, .terminal {
+      width: 120px;
+      height: 120px;
+    }
+    
+    #main-hallway {
+      left: 744px;
+      width: 153px;
+    }
+    
+    #left-offshoot-hallways {
+      height: 3960px
+    }
+    
+    #right-offshoot-hallways {
+      left: 868px;
+      height: 3960px
+    }
+    
+    #spud {
+      width: 96px;
+      height: 96px;
+      margin-top: -116px;
+      margin-left: 12px;
+    }
+    
+    #gunther-image-follow {
+      width: 96px;
+      height: 96px;
+      margin-top: 10px;
+      margin-left: 136px;
+    }
+    
+    #gunther-image-feed {
+      width: 96px;
+      height: 96px;
+      margin-left: -110px;
+      margin-top: 7px;
+    }
+    
+    #pharoah-image-follow {
+      width: 96px;
+      height: 96px;
+      margin-left: -115px;
+      margin-top: 13px;
+    }
+    
+    #pharoah-image-feed {
+      width: 96px;
+      height: 96px;
+      margin-left: -150px;
+      margin-top: 11.5px;
+    }
+    
+    #offshoot-2 {
+    margin-top: 372px;
+    }
+    
+    #offshoot-3 {
+    margin-top: 620px;
+    }
+    
+    #offshoot-6 {
+    margin-top: 372px;
+    }
+    
+    #offshoot-8 {
+    margin-top: 496px;
+    }
+    
+    #offshoot-9 {
+    margin-top: 372px;
+    }
+    
+    #offshoot-1 {
+    margin-top: 124px;
+    }
+    
+    #offshoot-4 {
+    margin-top: 496px;
+    }
+    
+    #offshoot-5 {
+    margin-top: 496px;
+    }
+    
+    #offshoot-7 {
+    margin-top: 496px;
+    }
+    
+    #offshoot-10 {
+    margin-top: 248px;
+    } */
+
+    .direction-button {
+      font-size: 1.2em;
+      height: 35px;
+      width: 35px;
+    }
+    
+    #direction-arrows-updown {
+      margin-right: 42px;
+      width: 45px;
+    }
+    
+    #direction-arrows-leftright {
+      margin-bottom: 30px;
+    }
+    
+    #down-arrow {
+      margin-top: 20px;
+    }
+    
+    #right-arrow {
+      margin-left: 50px;
+    }
+
+    .terminal-window {
+      width: 180px;
+      height: 95px;
+      border: solid #013220 5px;
+      margin-top: -105px
+    }
+    
+    .terminal-window-header {
+      font-size: .7rem;
+    }
+    
+    .terminal-window-explanation {
+       font-size: .45rem
+    }
+    
+    .terminal-window-button {
+      font-size: .4rem
+    }
+    
+    #spuds-snips-wednesday-header, #spuds-snips-tuesday-header, #spuds-songs-header, #spuds-stuff-header, #spuds-ship-header {
+      font-size: .9em;
+    }
+    
+    #spuds-songs-explanation, #spuds-stuff-explanation, #spuds-ship-explanation {
+      margin-top: 6px;
+    }
+
+    #spuds-snips-wednesday-explanation, #spuds-snips-tuesday-explanation {
+      margin-top: 0px;
+    }
+    
+    .close-button {
+      font-size: .2rem;
+    }
+    
+    .cat-images, .food-images {
+      width: 42px;
+      height: 42px;
+      margin-top: 10px
+    }
+    
+    #cocktail-clash-window {
+      margin-right: 465px;
+    }
+    
+    #retrieve-pharoah-window {
+      margin-left: 600px;
+    }
+    
+    #retrieve-gunther-window {
+      margin-right: 215px;
+    }
+    
+    #spuds-stuff-window, #feed-pharoah-window {
+      margin-left: 215px;
+    }
+    
+    #spuds-snips-wednesday-window, #spuds-songs-window  {
+      margin-right: 480px;
+    }
+    
+    #spuds-snips-tuesday-window {
+      margin-left: 340px;
+    }
+    
+    #spuds-ship-window {
+      margin-right: 340px;
+    }
+    
+    #feed-gunther-window {
+      margin-top: 120px;
+      margin-left: 300px;
+    }
+
+    #feed-pharoah-button, #feed-gunther-button {
+      font-size: .35rem;
+    }
+
+    #spuds-snips-tuesday-component, #spuds-snips-wednesday-component {
+      height: 300px;
+      border: 9px ridge #057405;
+    }
+          
+    #spuds-songs-component, #spuds-stuff-component {
+      height: 300px;
+      border: 9px ridge #057405;
+    }
+
+    #song-arrow-left, #stuff-arrow-left {
+      margin-left: 0px;
+      margin-bottom: 0px;
+    }
+    
+    #song-arrow-right, #stuff-arrow-right {
+      margin-right: 0px;
+      margin-bottom: 0px;
+    }
+
+    .song-page-header, .stuff-page-header {
+      font-size: .9rem;
+    }
+    
+    .release-image {
+      width: 110px;
+      height: 110px
+    }
+    
+    .release-title {
+      max-width: 110px;
+      font-size: .6em
+    }
+    
+    .release-explanation-div {
+      width: 110px;
+      height: 75px;
+      margin-top: -100px;
+      margin-left: 10px
+    }
+
+    .release-explanation {
+      font-size: .45rem;
+    }
+
+    .link-images {
+      max-width: 80px;
+      max-height: 50px
+    }
+
+    #spotify-image {
+      margin-top: 140px;
+    }
+    
+    #soundcloud-image {
+      margin-top: 90px;
+    }
+    
+    #bandcamp-image {
+      margin-top: -5px;
+    }
+    
+    #youtube-image {
+      margin-top: -10px;
+    }
+
+    .props-image {
+      max-width: 100px;
+      max-height: 100px
+    }
+    
+    .props-explanation {
+      margin-left: -20px;
+    }
+    
+    #spencer-props-div {
+      margin-top: 80px;
+    }
+  
+    #craig-props-div {
+      margin-top: 25px;
+    }
+
+    .props-explanation {
+      max-width: 150px;
+      font-size: .5em
+    }
+
+    .stuff-div {
+      width: 120px;
+    }
+
+    .stuff-list {
+      width: 80px;
+    }
+
+    .stuff-header {
+      font-size: .7rem;
+    }
+
+    .stuff-list-item {
+      font-size: .35rem;
+      margin-right: 150px
+    }
+  
+    #music-stuff-list > li {
+      padding-bottom: 10px;
+      padding-top: 5px;  
+    }
+    
+    .stuff-list-logo {
+      max-height: 10px;
+      max-width: 10px;
+      margin-left: 5px;
+      padding-top: 1px;
+    }
+
+    #misc-stuff-list > li {
+      padding-bottom: 10px;
+    }
+
+    #ableton-logo, #tailwind-logo {
+      max-width: 120px;
+      max-height: 20px;
+    }
+
+    #language-logo {
+      max-height: 10px;
+      max-width: 10px;
+      margin-left: 40px
+    }
+
+    #writing-list-item {
+      margin-top: -10px;
+    }
+
+    .stuff-page-link-img {
+      max-height: 80px;
+      max-width: 80px
+    }
+    
+    #stuff-page-links {
+      margin-top: 50px;
+    }
+    
+    .stuff-page-link-title {
+      font-size: 1.2em;
+    }
+    
+    .stuff-page-link-div {
+      width: 100px;
+      height: 100px;
+      border: 15px inset #013220
+    }
+
+    .stuff-page-link-div:hover {
+      border: 15px inset #730e15
+    }
+    
+    #github-img-link {
+      padding-top: 20px;
+    }
+    
+    #resume-img-link {
+      font-size: 1.2em;
+      padding-top: 25px;
+    }
+
+    .stuff-page-link-title {
+      font-size: .8em;
+    }
+    
+    #bio, #email, #instagram {
+      font-size: .7em;
+      text-align: center;
+    }
+    
+    #bio-div {
+      border: 8px inset #014801;
+      margin-top: -6px;
+    }
+
+    #email {
+      margin-top: 25px;
+    }
+
+    .taunt-divs {
+      margin-top: -100px;
+      margin-left: -220px;
+      width: 200px;
+      height: 70px;
+      border: 4px ridge #057405;
+    }
+    
+    .taunt-messages {
+      padding: 5px;
+      font-size: .7rem;
+    }
+    
+    #taunt-div-pharoah {
+      margin-top: 130px;
+    }
+
+    .thank-you-messages {
+      font-size: 1.3em;
+    }
+
+    #wednesday-snips-header {
+      font-size: 1.1em;
+    }
+
+    .tuesday-buttons {
+      font-size: 1em;
+      height: 32px;
+      width: 32px;
+      border: 4px inset #057405
+    }
+    
+    .wednesday-buttons {
+      font-size: .9em;
+      height: 30px;
+      width: 30px;
+      border: 4px inset #057405;
+      margin-top: 120px
+    }
+    
+    .tuesday-buttons:hover, .wednesday-buttons:hover {
+      cursor: pointer;
+      background-color: #ad242c;
+      border: 4px outset #730e15;
+    }
+
+  }
+
+  @media screen and (max-height: 330px) {
+
+    @keyframes buttonMovement {
+      0% { margin-top: 75px; margin-right: 0px }
+      16% { margin-top: -140px; margin-right: 0px }
+      32% { margin-top: -140px; margin-right: 360px }
+      48% { margin-top: 140px; margin-right: 360px }
+      64% { margin-top: 140px; margin-right: -360px }
+      80% { margin-top: -125px; margin-right: -360px } 
+      92% { margin-top: -125px; margin-right: 180px }
+      100% { margin-top: 75px; margin-right: 0px }
+    }
+
+    @keyframes tuemove {
+      0% { margin-top: 0px }
+      22% { margin-top: 45px }
+      40% { margin-top: 85px }
+      74% { margin-top: 69px }
+      100% { margin-top: 0px }
+    }
+    
+    @keyframes tuemove2 {
+      0% { margin-top: 36px }
+      9% { margin-top: 79px }
+      37% { margin-top: 64px }
+      51% { margin-top: 92px }
+      100% { margin-top: 36px }
+    }
+    
+    @keyframes tuemove3 {
+      0% { margin-top: 40px }
+      19% { margin-top: 65px }
+      41% { margin-top: 81px }
+      60% { margin-top: 90px }
+      100% { margin-top: 40px }
+    }
+    
+    @keyframes tuemove4 {
+      0% { margin-top: 53px }
+      30% { margin-top: 73px }
+      55% { margin-top: 3px }
+      100% { margin-top: 53px }
+    }
+    
+    @keyframes tuemove5 {
+      0% { margin-top: 67px }
+      60% { margin-top: 79px } 
+      100% { margin-top: 67px }
+    }
+    
+    @keyframes tuemove6 {
+      0% { margin-top: 78px }
+      70% { margin-top: 44px }
+      90% { margin-top: 85px }
+      100% { margin-top: 78px }
+    }
+    
+    @keyframes tuemove7 {
+      0% { margin-top: 85px }
+      12% { margin-top: 92px }
+      44% { margin-top: 81px }
+      69% { margin-top: 63px }
+      100% { margin-top: 85px }
+    }
+    
+    @keyframes tuemove8 {
+      0% { margin-top: 84px }
+      30% { margin-top: 16px }
+      53% { margin-top: 63px }
+      100% { margin-top: 84px }
+    }
+    
+    @keyframes tuemove9 {
+      0% { margin-top: 81px }
+      20% { margin-top: 95px }
+      70% { margin-top: 67px }
+      100% { margin-top: 81px }
+    }
+    
+    @keyframes tuemove10 {
+      0% { margin-top: 90px }
+      23% { margin-top: 82px }
+      81% { margin-top: 40px }
+      100% { margin-top: 90px }
+    }
+
+    #spuds-snips-tuesday-component, #spuds-snips-wednesday-component {
+      height: 265px;
+      border: 9px ridge #057405;
+    }
+          
+    #spuds-songs-component, #spuds-stuff-component {
+      height: 265px;
+      border: 9px ridge #057405;
+    }
+
+    #song-arrow-left, #stuff-arrow-left {
+      margin-left: 0px;
+      margin-bottom: 0px;
+    }
+    
+    #song-arrow-right, #stuff-arrow-right {
+      margin-right: 0px;
+      margin-bottom: 0px;
+    }
+
+    .song-page-header, .stuff-page-header {
+      font-size: .9rem;
+    }
+    
+    .release-image {
+      width: 100px;
+      height: 100px
+    }
+    
+    .release-title {
+      max-width: 100px;
+      font-size: .65em
+    }
+    
+    .release-explanation-div {
+      width: 100px;
+      height: 65px;
+      margin-top: -100px;
+      margin-left: 10px
+    }
+
+    .release-explanation {
+      font-size: .4rem;
+    }
+
+    .link-images {
+      max-width: 75px;
+      max-height: 50px
+    }
+
+    #spotify-image {
+      margin-top: 140px;
+    }
+    
+    #soundcloud-image {
+      margin-top: 60px;
+    }
+    
+    #bandcamp-image {
+      margin-top: -10px;
+    }
+    
+    #youtube-image {
+      margin-top: -40px;
+    }
+
+    .props-image {
+      max-width: 70px;
+      max-height: 70px;
+      border: 4px inset #013220;
+    }
+    
+    .props-image:hover {
+      border: 4px inset #730e15  
+    }
+    
+    .props-explanation {
+      margin-left: -15px;
+    }
+    
+    #spencer-props-div {
+      margin-top: 60px;
+    }
+  
+    #craig-props-div {
+      margin-top: 25px;
+    }
+
+    .props-explanation {
+      max-width: 100px;
+      font-size: .45rem
+    }
+
+    .stuff-list {
+      width: 70px;
+    }
+
+    .stuff-list-item {
+      font-size: .4rem;
+      margin-right: 50px
+    }
+  
+    #music-stuff-list > li {
+      padding-bottom: 6px;
+      padding-top: 2px;  
+    }
+    
+    .stuff-list-logo {
+      max-height: 10px;
+      max-width: 10px;
+      margin-left: 5px;
+      padding-top: 1px;
+    }
+
+    #misc-stuff-list > li {
+      padding-bottom: 5px;
+    }
+
+    #programming-stuff-list > li {
+      padding-top: 2px;
+    }
+
+    #language-logo {
+      max-height: 10px;
+      max-width: 10px;
+      margin-left: 40px
+    }
+
+    #writing-list-item {
+      margin-top: -10px;
+    }
+
+    .stuff-page-link-img {
+      max-height: 80px;
+      max-width: 80px
+    }
+    
+    #stuff-page-links {
+      margin-top: 50px;
+    }
+    
+    .stuff-page-link-title {
+      font-size: 1.2em;
+    }
+    
+    .stuff-page-link-div {
+      width: 100px;
+      height: 100px;
+      border: 15px inset #013220
+    }
+
+    .stuff-page-link-div:hover {
+      border: 15px inset #730e15
+    }
+    
+    #github-img-link {
+      padding-top: 20px;
+    }
+    
+    #resume-img-link {
+      font-size: 1.2em;
+      padding-top: 25px;
+    }
+
+    .stuff-page-link-title {
+      font-size: .8em;
+    }
+    
+    #bio, #email, #instagram {
+      font-size: .6rem;
+      text-align: center;
+    }
+    
+    #bio-div {
+      border: 8px inset #014801;
+      margin-top: -6px;
+    }
+
+    #email {
+      margin-top: 15px;
+    }
+
+    #spuds-snips-tuesday-name-area, #spuds-snips-wednesday-name-area {
+      font-size: 1em;
+    }
+
+    #tuesday-snips-header {
+      font-size: 1.1em;
+    }
+    
+    .tuesday-buttons {
+      font-size: 1em;
+      height: 32px;
+      width: 32px;
+      border: 4px inset #057405
+    }
+    
+    .wednesday-buttons {
+      font-size: .9em;
+      height: 30px;
+      width: 30px;
+      border: 4px inset #057405;
+      margin-top: 120px
+    }
+    
+    .tuesday-buttons:hover, .wednesday-buttons:hover {
+      cursor: pointer;
+      background-color: #ad242c;
+      border: 4px outset #730e15;
+    }
+
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  #entry-page {
+    display: flex;
+    flex-direction: column
+  }
+
+  #website-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+  }
+
+  .welcome-letters {
+    font-size: 4em;
+  }
+    
+  #spuds-lair-text {
+    font-size: 2em;
+  }
+    
+  .entry-buttons {
+    font-size: 1.2rem;
+    width: 250px;
+    height: 90px;
+    flex-grow: 1;
+  }
+
+  #w {
+    margin-top: 10px
+  }
+  
+  #e {
+    margin-top: 40px
+  }
+  
+  #l {
+    margin-top: 70px
+  }
+  
+  #c {
+    margin-top: 90px
+  }
+  
+  #o {
+    margin-top: 120px
+  }
+  
+  #m {
+    margin-top: 80px
+  }
+  
+  #e {
+    margin-top: 40px
+  }
+
+  .tile, .offshoot-tile-left, .offshoot-tile-right, .terminal {
+    background-color: #28282b
+  }
+
+  #spud {
+    display: none;
+  }
+
+  #arrow-instructions {
+    display: none;
+  }
+
+  #direction-arrows-updown, #direction-arrows-leftright {
+    display: none;
+  }
+
+  @media screen and (max-height: 900px) {
+
+    .entry-buttons {
+      font-size: 1.2rem;
+      width: 250px;
+      height: 90px;
+      margin-top: 40px;
+    }
+
+  }
+
+  @media screen and (max-height: 600px) {
+
+    .entry-buttons {
+      font-size: 1.1rem;
+      width: 230px;
+      height: 80px;
+      margin-top: 20px;
+    }
+
+  }
+
+  @media screen and (max-height: 475px) {
+
+    .entry-buttons {
+      font-size: .8rem;
+      width: 200px;
+      height: 60px;
+      margin-top: 5px;
+    }
+
+  }
+    
+}
+
+@media screen and (max-width: 350px) {
+  .welcome-letters {
+    font-size: 3em;
+  }
+
+  #spuds-lair-text {
+    font-size: 1.5em;
+  }
+
+  #landscape-div {
+    width: 250px;
+    border: 4px ridge #057405;
+  }
+  
+  #landscape-message {
+    font-size: 1.2em;
+  }
 }

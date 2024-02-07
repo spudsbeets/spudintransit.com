@@ -27,6 +27,10 @@ const SpudsSnipsTuesday = () => {
     return window.innerWidth
   }
 
+  function getWindowHeight(): number {
+    return window.innerHeight
+  }
+
   function randomIndex(max: number): number {
     return Math.floor(Math.random() * max)
   }
@@ -79,7 +83,7 @@ const SpudsSnipsTuesday = () => {
         animation: "tuemove10"
         } 
       ]
-    } else if (getWindowWidth() <= 1350) {
+    } else if (getWindowWidth() <= 1350 && getWindowWidth() > 850) {
       return [
         {
         margin: "0px",
@@ -122,6 +126,138 @@ const SpudsSnipsTuesday = () => {
         animation: "tuemove10"
         } 
       ]
+    } else if (getWindowWidth() <= 850) {
+      if (getWindowHeight() > 400) {
+        return [
+          {
+          margin: "0px",
+          animation: "tuemove1"
+          }, 
+          {
+          margin: "36px",
+          animation: "tuemove2"
+          },
+          {
+          margin: "70px",
+          animation: "tuemove3"
+          },
+          {
+          margin: "83px",
+          animation: "tuemove4"  
+          },
+          {
+          margin: "127px",
+          animation: "tuemove5"
+          },
+          {
+          margin: "138px",
+          animation: "tuemove6"
+          },
+          {
+          margin: "145px",
+          animation: "tuemove7"
+          },
+          {
+          margin: "183px",
+          animation: "tuemove8"
+          },
+          {
+          margin: "161px",
+          animation: "tuemove9"
+          },
+          {
+          margin: "170px",
+          animation: "tuemove10"
+          } 
+        ]
+      } else if (getWindowHeight() <= 400 && getWindowHeight() > 330) {
+        return [
+          {
+          margin: "0px",
+          animation: "tuemove1"
+          }, 
+          {
+          margin: "36px",
+          animation: "tuemove2"
+          },
+          {
+          margin: "40px",
+          animation: "tuemove3"
+          },
+          {
+          margin: "53px",
+          animation: "tuemove4"  
+          },
+          {
+          margin: "67px",
+          animation: "tuemove5"
+          },
+          {
+          margin: "78px",
+          animation: "tuemove6"
+          },
+          {
+          margin: "85px",
+          animation: "tuemove7"
+          },
+          {
+          margin: "93px",
+          animation: "tuemove8"
+          },
+          {
+          margin: "101px",
+          animation: "tuemove9"
+          },
+          {
+          margin: "110px",
+          animation: "tuemove10"
+          } 
+        ] 
+      }
+      else {
+        return [
+          {
+          margin: "0px",
+          animation: "tuemove1"
+          }, 
+          {
+          margin: "36px",
+          animation: "tuemove2"
+          },
+          {
+          margin: "40px",
+          animation: "tuemove3"
+          },
+          {
+          margin: "53px",
+          animation: "tuemove4"  
+          },
+          {
+          margin: "67px",
+          animation: "tuemove5"
+          },
+          {
+          margin: "78px",
+          animation: "tuemove6"
+          },
+          {
+          margin: "85px",
+          animation: "tuemove7"
+          },
+          {
+          margin: "84px",
+          animation: "tuemove8"
+          },
+          {
+          margin: "81px",
+          animation: "tuemove9"
+          },
+          {
+          margin: "90px",
+          animation: "tuemove10"
+          } 
+        ]       
+      }      
     } else {
       throw new Error("whaaat")
     }

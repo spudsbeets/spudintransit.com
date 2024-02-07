@@ -43,15 +43,36 @@ const FunPath = () => {
   const leftHallwayDivs: HTMLCollectionOf<Element> = document.getElementsByClassName("offshoot-tile-left")
 
   function getWindowWidth(): number {
-    console.log(window.innerWidth)
     return window.innerWidth
+  }
+
+  function getWindowHeight(): number {
+    return window.innerHeight
+  }
+
+  function checkLandscape(): void {
+    if (getWindowWidth() < 500) {
+      let landscapeDiv = document.createElement('div');
+      const landscapeMessage = document.createElement('p');
+      landscapeDiv.id = "landscape-div";
+      landscapeMessage.id = "landscape-message";
+      landscapeMessage.innerHTML = "Turn your phone horizontal!";
+      (document.getElementById("spuds-ship") as HTMLDivElement).appendChild(landscapeDiv);
+      landscapeDiv.appendChild(landscapeMessage);
+    } else {
+      null
+    }
   }
 
   function getSpudMargin(): number {
     if (getWindowWidth() >= 1000) {
       return 204
-    } else if (getWindowWidth() < 1000 && getWindowWidth() >= 700) {
-      return 164
+    } else if (getWindowWidth() < 1000 && getWindowWidth() >= 500) {
+      if (getWindowHeight() > 400) {
+        return 164
+      } else {
+        return 124
+      }
     } else {
       throw new Error("whaat")
     }
@@ -60,71 +81,135 @@ const FunPath = () => {
   function getClosenessMarg(): number {
     if (getWindowWidth() >= 1000) {
       return 65
-    } else if (getWindowWidth() < 1000 && getWindowWidth() >= 700) {
-      return 45
+    } else if (getWindowWidth() < 1000 && getWindowWidth() >= 500) {
+      if (getWindowHeight() > 400) {
+        return 45
+      } else {
+        return 33
+      }
     } else {
       throw new Error("whaat")
     }
   }
 
   function getDefaultMargs(): MarginObject {
-    if (getWindowWidth() < 1000 && getWindowWidth() >= 700) {
-      return {
-        defaultMarginLeft: "16px",
-        leftOffshootMargins: [
-         {
-          marginTop: "-1790px",
-          marginLeft: "-804px",
-          correlatedTerminal: "cocktail-clash"
-         },
-         {
-          marginTop: "-2446px",
-          marginLeft: "-476px",
-          correlatedTerminal: "retrieve-gunther"
-         },
-         {
-          marginTop: "-3266px",
-          marginLeft: "-968px",
-          correlatedTerminal: "spuds-snips-wednesday"
-         },
-         {
-          marginTop: "-3922px",
-          marginLeft: "-968px",
-          correlatedTerminal: "spuds-songs"
-         },
-         {
-          marginTop: "-4906px",
-          marginLeft: "-640px",
-          correlatedTerminal: "spuds-ship"
-         },
-        ],
-        rightOffshootMargins: [
-         {
-           marginTop: "-2282px",
-           marginLeft: "1000px",
-           correlatedTerminal: "retrieve-pharoah"
-         },
-         {
-           marginTop: "-2774px",
-           marginLeft: "508px",
-           correlatedTerminal: "spuds-stuff"
-         },
-         {
-           marginTop: "-3594px",
-           marginLeft: "672px",
-           correlatedTerminal: "spuds-snips-tuesday"
-         },
-         {
-           marginTop: "-4414px",
-           marginLeft: "508px",
-           correlatedTerminal: "feed-pharoah"
-         },
-         {
-           marginTop: "-5234px",
-           marginLeft: "836px",
-           correlatedTerminal: "feed-gunther"
-         },
-        ]
+    if (getWindowWidth() < 1000 && getWindowWidth() >= 500) {
+      if (getWindowHeight() > 400) {
+        return {
+          defaultMarginLeft: "16px",
+          leftOffshootMargins: [
+           {
+            marginTop: "-1790px",
+            marginLeft: "-804px",
+            correlatedTerminal: "cocktail-clash"
+           },
+           {
+            marginTop: "-2446px",
+            marginLeft: "-476px",
+            correlatedTerminal: "retrieve-gunther"
+           },
+           {
+            marginTop: "-3266px",
+            marginLeft: "-968px",
+            correlatedTerminal: "spuds-snips-wednesday"
+           },
+           {
+            marginTop: "-3922px",
+            marginLeft: "-968px",
+            correlatedTerminal: "spuds-songs"
+           },
+           {
+            marginTop: "-4906px",
+            marginLeft: "-640px",
+            correlatedTerminal: "spuds-ship"
+           },
+          ],
+          rightOffshootMargins: [
+           {
+             marginTop: "-2282px",
+             marginLeft: "1000px",
+             correlatedTerminal: "retrieve-pharoah"
+           },
+           {
+             marginTop: "-2774px",
+             marginLeft: "508px",
+             correlatedTerminal: "spuds-stuff"
+           },
+           {
+             marginTop: "-3594px",
+             marginLeft: "672px",
+             correlatedTerminal: "spuds-snips-tuesday"
+           },
+           {
+             marginTop: "-4414px",
+             marginLeft: "508px",
+             correlatedTerminal: "feed-pharoah"
+           },
+           {
+             marginTop: "-5234px",
+             marginLeft: "836px",
+             correlatedTerminal: "feed-gunther"
+           },
+          ]
+        }
+      } else {
+        return {
+          defaultMarginLeft: "12px",
+          leftOffshootMargins: [
+           {
+            marginTop: "-1356px",
+            marginLeft: "-608px",
+            correlatedTerminal: "cocktail-clash"
+           },
+           {
+            marginTop: "-1852px",
+            marginLeft: "-360px",
+            correlatedTerminal: "retrieve-gunther"
+           },
+           {
+            marginTop: "-2472px",
+            marginLeft: "-732px",
+            correlatedTerminal: "spuds-snips-wednesday"
+           },
+           {
+            marginTop: "-2968px",
+            marginLeft: "-732px",
+            correlatedTerminal: "spuds-songs"
+           },
+           {
+            marginTop: "-3712px",
+            marginLeft: "-484px",
+            correlatedTerminal: "spuds-ship"
+           },
+          ],
+          rightOffshootMargins: [
+           {
+             marginTop: "-1728px",
+             marginLeft: "756px",
+             correlatedTerminal: "retrieve-pharoah"
+           },
+           {
+             marginTop: "-2100px",
+             marginLeft: "384px",
+             correlatedTerminal: "spuds-stuff"
+           },
+           {
+             marginTop: "-2720px",
+             marginLeft: "508px",
+             correlatedTerminal: "spuds-snips-tuesday"
+           },
+           {
+             marginTop: "-3340px",
+             marginLeft: "384px",
+             correlatedTerminal: "feed-pharoah"
+           },
+           {
+             marginTop: "-3960px",
+             marginLeft: "632px",
+             correlatedTerminal: "feed-gunther"
+           },
+          ]
+        }        
       }
     } else if (getWindowWidth() >= 1000) {
       return {
@@ -525,7 +610,6 @@ const FunPath = () => {
             }
           }
           spud.style.marginTop = newMarg.toString() + "px"  
-          console.log(spudCss.marginTop)
           count -= 1
           break
          }
@@ -1343,6 +1427,10 @@ const FunPath = () => {
   setInterval(() => removeBlinksMainHallway(mainHallwayDivs), 39999)
   setInterval(() => removeBlinksLeftHallway(leftHallwayDivs), 39999)
   setInterval(() => removeBlinksRightHallway(rightHallwayDivs), 39999)
+  const landscapeInterval = setInterval(() => checkLandscape())
+  setInterval(() => landscapeInterval)
+  setTimeout(() => { clearInterval(landscapeInterval) }, 5)
+
   
   return(
   <div id="lair">
