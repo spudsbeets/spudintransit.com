@@ -1,6 +1,5 @@
 import '../App.css'
 import FunPath from '../components/funpath'
-import BoringPath from '../components/boringpath'
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SpudsSongs from './spudssongs'
@@ -28,11 +27,10 @@ const EntryPage = () => {
     <p id="spuds-lair-text">to spud's lair</p>
     <div id="website-options">
      <button className="entry-buttons" id="fun-path-button" onClick={() => setPathSelected("fun-path")}>fun path (kinda puzzley...)</button>
-     <button className="entry-buttons"id="boring-path-button" onClick={() => setPathSelected("boring-path")}>boring path (easier to navigate...)</button>
+     <a href="boring-path-link"><button className="entry-buttons"id="boring-path-button">informative path (easier to navigate...)</button></a>
     </div>
-   </div>    
-    : pathSelected === "fun-path" || pathSelected === "cocktail-clash" ? <FunPath />
-    : <BoringPath />
+    </div>    
+    : <FunPath />
 
     return(
         <>

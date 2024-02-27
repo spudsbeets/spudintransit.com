@@ -49,6 +49,36 @@ const SpudsSongs = () => {
             throw new Error("whaat")
         }
     }
+
+    function checkDate(): void {
+        const inputDate = new Date('2024-02-07');
+        const currentDate = new Date();
+        if (inputDate < currentDate) {
+          const tuesWithGp = document.getElementById("tuesday-with-gp");
+          const wedWithGp = document.getElementById("wednesday-with-gp");
+          const tuesWithGpTitle = document.getElementById("tuesday-with-gp-title");
+          const wedWithGpTitle = document.getElementById("wednesday-with-gp-title");
+          const tuesWithGpExpl = document.getElementById("tuesday-with-gp-explanation");
+          const wedWithGpExpl = document.getElementById("wednesday-with-gp-explanation");
+          const tuesWithGpDiv = document.getElementById("tuesday-with-gp-explanation-div");
+          const wedWithGpDiv = document.getElementById("wednesday-with-gp-explanation-div");
+          (tuesWithGp as HTMLDivElement).style.filter = "none";
+          (wedWithGp as HTMLDivElement).style.filter = "none";
+          (tuesWithGpTitle as HTMLElement).style.filter = "none";
+          (wedWithGpTitle as HTMLElement).style.filter = "none";
+          (tuesWithGpExpl as HTMLDivElement).style.filter = "none";
+          (wedWithGpExpl as HTMLDivElement).style.filter = "none";
+          (tuesWithGpDiv as HTMLDivElement).style.backgroundColor = "#33cc33";
+          (wedWithGpDiv as HTMLDivElement).style.backgroundColor = "#33cc33";
+          console.log((tuesWithGp as HTMLDivElement).style.filter)
+        } else {
+          console.log('not yet!')
+        }
+      }
+
+      const dateInterval = setInterval(() => checkDate())
+      setInterval(() => dateInterval);
+      setTimeout(() => { clearInterval(dateInterval)}, 5)
     
 
     return(
