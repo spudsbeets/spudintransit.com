@@ -26,6 +26,7 @@ const SpudsStuff = () => {
             return {pageNum: 1}
           }
           case REDUCER_TYPE.TWO: {
+            console.log(state)
             return {pageNum: 2}
           }
           case REDUCER_TYPE.THREE: {

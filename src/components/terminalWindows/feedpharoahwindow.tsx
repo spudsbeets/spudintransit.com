@@ -7,7 +7,7 @@ type PropsType = {
 const FeedPharoahWindow = ({ setShowFeedPTerminal, getSpudMargin, regex }: PropsType) => {
   return(
     <>
-    <img className="food-images" id="pharoah-food-image" src="./src/images/catfood.png" alt="pharoah-food"></img>
+    <img className="food-images" id="pharoah-food-image" src="/images/catfood.png" alt="pharoah-food"></img>
     <button className="terminal-window-button" id="feed-pharoah-button" onClick={() => {
       if (document.getElementById("pharoah-image-follow")) {
         (document.getElementById("pharoah-image-follow") as HTMLImageElement).remove();
@@ -15,7 +15,7 @@ const FeedPharoahWindow = ({ setShowFeedPTerminal, getSpudMargin, regex }: Props
         document.getElementById("feed-pharoah-button")?.remove();
         const pharoahFood = document.createElement("img");
         pharoahFood.id = "pharoah-image-feed";
-        pharoahFood.src = "./src/images/pharoah1.png";
+        pharoahFood.src = "/images/pharoah1.png";
         pharoahFood.alt = "pharoahFood";
         pharoahFood.className = "cat-images";
         (document.getElementById("feed-pharoah") as HTMLDivElement).appendChild(pharoahFood);

@@ -8,7 +8,7 @@ type PropsType = {
     
     return(
     <>
-    <img className="food-images" id="gunther-food-image" src="./src/images/catfood.png" alt="gunther-food"></img>
+    <img className="food-images" id="gunther-food-image" src="/images/catfood.png" alt="gunther-food"></img>
     <button className="terminal-window-button" id="feed-gunther-button" onClick={() => {
       if (document.getElementById("gunther-image-follow")) {
         (document.getElementById("gunther-image-follow") as HTMLImageElement).remove();
@@ -16,7 +16,7 @@ type PropsType = {
         document.getElementById("feed-gunther-button")?.remove();
         const guntFood = document.createElement("img");
         guntFood.id = "gunther-image-feed";
-        guntFood.src = "./src/images/gunther1.png";
+        guntFood.src = "/images/gunther1.png";
         guntFood.alt = "guntFood";
         guntFood.className = "cat-images";
         (document.getElementById("feed-gunther") as HTMLDivElement).appendChild(guntFood);

@@ -28,6 +28,7 @@ const SpudsSongs = () => {
             return {pageNum: 2}
           }
           case REDUCER_TYPE.THREE: {
+            console.log(state)
             return {pageNum: 3}
           }
           default: {
@@ -51,7 +52,7 @@ const SpudsSongs = () => {
     }
 
     function checkDate(): void {
-        const inputDate = new Date('2024-02-07');
+        const inputDate = new Date('2024-05-18');
         const currentDate = new Date();
         if (inputDate < currentDate) {
           const tuesWithGp = document.getElementById("tuesday-with-gp");

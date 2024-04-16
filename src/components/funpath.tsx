@@ -1530,7 +1530,7 @@ const FunPath = () => {
      </div>
      </div>
      <div id="spud-starter">
-      <img alt="spud" id="spud" src="./src/images/spud.png" onLoad={() => (document.getElementById("spud") as HTMLImageElement).scrollIntoView({ behavior: "smooth", block: "center", inline: "center"})}></img>
+      <img alt="spud" id="spud" src="/images/spud.png" onLoad={() => (document.getElementById("spud") as HTMLImageElement).scrollIntoView({ behavior: "smooth", block: "center", inline: "center"})}></img>
       </div>
      <div id="direction-arrows-updown">
       <button className="direction-button" id="up-arrow" onClick={() => {
