@@ -1426,7 +1426,7 @@ const FunPath = () => {
       inline: 'center'
     },
     {
-      duration: 100
+      duration: 250
     })
    })
   },[]);
@@ -1544,7 +1544,7 @@ const FunPath = () => {
       inline: 'center'
     },
     {
-      duration: 100
+      duration: 250
     }))}></img>
       </div>
      <div id="direction-arrows-updown">
