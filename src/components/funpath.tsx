@@ -1421,7 +1421,9 @@ const FunPath = () => {
     }
     setTimeout(function () {
       spud.scrollIntoView({
-        behavior: "auto"
+        behavior: "smooth",
+        block: "center",
+        inline: "center"
       })
     }, 200)
    })
@@ -1536,7 +1538,9 @@ const FunPath = () => {
      <div id="spud-starter">
       <img alt="spud" id="spud" src="/images/spud.png" onLoad={() => (setTimeout(function () {
         (document.getElementById("spud") as HTMLImageElement).scrollIntoView({
-          behavior: "auto"
+          behavior: "smooth",
+          block: "center",
+          inline: "center"
         })
       }, 200))}></img>
       </div>
