@@ -12,7 +12,6 @@ import FeedPharoahWindow from './terminalWindows/feedpharoahwindow'
 import FeedGuntherWindow from './terminalWindows/feedguntherwindow'
 import RetrievePharoahWindow from './terminalWindows/retrievepharoahwindow'
 import RetrieveGuntherWindow from './terminalWindows/retrieveguntherwindow'
-import { scrollIntoView } from 'seamless-scroll-polyfill'
 
 const FunPath = () => {
 
@@ -1420,14 +1419,13 @@ const FunPath = () => {
         }
       }
     }
-    scrollIntoView(spud, {
-      behavior: 'auto',
-      block: 'center',
-      inline: 'center'
-    },
-    {
-      duration: 250
-    })
+    setTimeout(function () {
+      spud.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center"
+      })
+    }, 200)
    })
   },[]);
 
@@ -1538,14 +1536,13 @@ const FunPath = () => {
      </div>
      </div>
      <div id="spud-starter">
-      <img alt="spud" id="spud" src="/images/spud.png" onLoad={() => (scrollIntoView(document.getElementById("spud") as HTMLImageElement, {
-      behavior: 'auto',
-      block: 'center',
-      inline: 'center'
-    },
-    {
-      duration: 250
-    }))}></img>
+      <img alt="spud" id="spud" src="/images/spud.png" onLoad={() => (setTimeout(function () {
+        (document.getElementById("spud") as HTMLImageElement).scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center"
+        })
+      }, 200))}></img>
       </div>
      <div id="direction-arrows-updown">
       <button className="direction-button" id="up-arrow" onClick={() => {
