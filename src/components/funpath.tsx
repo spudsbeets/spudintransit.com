@@ -1421,7 +1421,7 @@ const FunPath = () => {
       }
     }
     scrollIntoView(spud, {
-      behavior: 'smooth',
+      behavior: 'auto',
       block: 'center',
       inline: 'center'
     },
@@ -1539,7 +1539,7 @@ const FunPath = () => {
      </div>
      <div id="spud-starter">
       <img alt="spud" id="spud" src="/images/spud.png" onLoad={() => (scrollIntoView(document.getElementById("spud") as HTMLImageElement, {
-      behavior: 'smooth',
+      behavior: 'auto',
       block: 'center',
       inline: 'center'
     },
