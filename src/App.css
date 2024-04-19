@@ -214,6 +214,10 @@ body, html {
   overflow: hidden;
 }
 
+button, a {
+  color: black
+}
+
 #welcome {
   display: flex;
   justify-content: space-around;
