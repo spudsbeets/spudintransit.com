@@ -480,6 +480,7 @@ button, a {
   margin-left: 10px;
   height: 50px;
   width: 50px;
+  border: 0;
 }
 
 .direction-button:hover {
@@ -487,24 +488,20 @@ button, a {
 }
 
 #up-arrow {
-  background-color: #5F8575;
-  border: 1px solid #5f8575
+  background-color: #5F8575
 }
 
 #down-arrow {
   background-color: #96ded1;
-  border: 1px solid #96ded1;
   margin-top: 50px;
 }
 
 #left-arrow {
   background-color: #c4b454;
-  border: 1px solid #c4b454;
 }
 
 #right-arrow {
   background-color: #7df9ff;
-  border: 1px solid #7df9ff;
   margin-left: 70px;
 }
 
