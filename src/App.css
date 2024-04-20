@@ -215,7 +215,8 @@ body, html {
 }
 
 button, a {
-  color: black
+  color: black;
+  border: 0;
 }
 
 #welcome {
