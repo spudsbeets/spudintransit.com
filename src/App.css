@@ -3381,6 +3381,10 @@ margin-top: 328px;
 
 @media screen and (max-width: 650px) {
 
+  #tuesday-snips-header {
+    font-size: 1.5em;
+  }
+
   @media screen and (max-height: 600px) {
 
     @keyframes buttonMovement {
@@ -4272,6 +4276,21 @@ margin-top: 328px;
   }
 }
 
+@media screen and (max-width: 600px) {
+  .tuesday-buttons {
+    font-size: .8em;
+    height: 30px;
+    width: 30px;
+    border: 4px inset #057405
+  }
+
+  .tuesday-buttons:hover, .wednesday-buttons:hover {
+    cursor: pointer;
+    background-color: #ad242c;
+    border: 4px outset #730e15;
+  }
+}
+
 @media screen and (max-width: 500px) {
 
   #entry-page {
@@ -4342,6 +4361,10 @@ margin-top: 328px;
 
   #direction-arrows-updown, #direction-arrows-leftright {
     display: none;
+  }
+
+  #tuesday-snips-header {
+    font-size: 1.2em;
   }
 
   @media screen and (max-height: 900px) {
