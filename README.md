@@ -7,7 +7,7 @@ It was built **prior to the widespread use of AI tools** and before my time as a
 
 ## 🚀 Getting Started
 
-Clone the repo, install dependencies, and spin up the dev server:
+Clone the repo, install dependencies, and spin up the dev server. Hit 'Fun Path' button to jump right in. 
 
 ```bash
 npm install
