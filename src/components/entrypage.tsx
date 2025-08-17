@@ -27,7 +27,7 @@ const EntryPage = () => {
     <p id="spuds-lair-text">to spud's lair</p>
     <div id="website-options">
      <button className="entry-buttons" id="fun-path-button" onClick={() => setPathSelected("fun-path")}>fun path (kinda puzzley...)</button>
-     <a href="https://www.spudintransit-informative.online"><button className="entry-buttons"id="boring-path-button">informative path (easier to navigate...)</button></a>
+     <a href="https://github.com/spudsbeets/informative-path"><button className="entry-buttons"id="boring-path-button">informative path (easier to navigate...)</button></a>
     </div>
     </div>    
     : <FunPath />
