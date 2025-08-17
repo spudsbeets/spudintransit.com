@@ -12,3 +12,21 @@ Clone the repo, install dependencies, and spin up the dev server:
 ```bash
 npm install
 npm run dev
+
+✨ Features
+
+🎭 Quirky and unconventional portfolio presentation
+
+🧩 Interactive puzzles and mini-games
+
+💡 A showcase of coding creativity and innovation
+
+⏳ Built before the AI boom & before my formal CS studies
+
+🛠️ Tech Stack
+
+⚛️ React (with functional components & hooks)
+
+⚡ Vite (fast dev server & bundler)
+
+📘 TypeScript (for type safety and maintainability)
